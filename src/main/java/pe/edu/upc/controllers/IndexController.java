@@ -9,10 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class IndexController {
 	// GET y POST
+	
+	
 	@GetMapping
 	public String index(Model model) 
 	{
-		model.addAttribute("saludo", "Hello programmers");
+		String saludo = "Hello Programmers";
+		model.addAttribute("saludo", saludo);
 		return "index";
 	}
 
