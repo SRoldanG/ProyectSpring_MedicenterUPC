@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+ 
+
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/chosen.min.css}">
+    <link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
+    <link rel="stylesheet" th:href="@{/css/solid.min.css}">
+
+    <title>Hello, world!</title>
+  </head>
+  <body  class="light-header animsition body-scrolled" style="background-image: url(https://i.imgur.com/mTyJtXq.jpg); background-repeat: no-repeat; background-size: cover; min-height: 100vh; background-attachment: fixed;">
+    
+    
+    
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark"  style="opacity: 0.7;"   >
+  <a class="navbar-brand" href="#"><img src="https://i.imgur.com/7q5Cl5j.png" width="70" height="66"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Nosotros</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Categorias</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Registrarse</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contacto</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Mas
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Tips de Salud</a>
+          <a class="dropdown-item" href="#">Sugerencias</a>
+          <a class="dropdown-item" href="#">Testimonios</a>
+          <a class="dropdown-item" href="#">¿Como usar?</a>
+        
+        </div>
+      </li>
+    </ul>
+    
+     <div style="margin-left:380px;">
+                                <li class="dropdown dropdown_login">
+                                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" >
+                                            <span class="item" style="color:#BDA51A;"><img src="https://i.imgur.com/gHAQwgr.png" width="40" height="40"><u>Soy doctor</u></span> </a>
+                                                        
+                                        <ul class="dropdown-menu" style="background-color:#898181; opacity:1.5;">
+                                            <li style="margin:0px 25px" class="login_form">
+                                                <div class="text-primary top_margin bottom_margin">
+                                                    <span class="h4 font_Conv_Roboto-Regular" style="color:#29358A">Mi zona privada</span></div>
+                                                <div class="item text-nowrap">
+                                                    <form method="post" action="#" class="header_login_form">
+                                                        
+                                                        <div class="login_message"></div>
+    Nombre de usuario o e-mail                                                        <input class="form-control bottom_margin bg_medium" name="email_login" value="" type="text">
+    Contraseña                                                        <input class="form-control bottom_margin bg_medium" name="password_login" type="password" value="">
+                                                            <a href="#" class="center-block text-right no_padding bottom_margin remind_pass"style="color:#29358A"><strong>¿Ha olvidado la contraseña?</strong></a>
+                                                        <div class="login_loading"></div>
+                                                        <div class="dark_border bottom_margin rounded_border">
+                                                                <button type="submit" class="btn btn_wd btn-block btn_light" >
+                                                                <span class="h4">Acceder</span>
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                        
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                  </div>
+                                    <!-- Patients -->
+                                 <div style="margin-left:0px;">
+                                <li class="dropdown dropdown_login">
+                                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" >
+                                            <span class="item" style="color:#BDA51A;"><img src="https://i.imgur.com/ECDm4tb.png" width="40" height="40"><u>Soy paciente</u></span> </a>
+                                                        
+                                        <ul class="dropdown-menu" style="background-color:#898181; opacity:1.5;">
+                                            <li style="margin:0px 25px" class="login_form">
+                                                <div class="text-primary top_margin bottom_margin">
+                                                    <span class="h4 font_Conv_Roboto-Regular" style="color:#29358A">Mi zona privada</span></div>
+                                                <div class="item text-nowrap">
+                                                    <form method="post" action="#" class="header_login_form">
+                                                        
+                                                        <div class="login_message"></div>
+    Nombre de usuario o e-mail                                                        <input class="form-control bottom_margin bg_medium" name="email_login" value="" type="text">
+    Contraseña                                                        <input class="form-control bottom_margin bg_medium" name="password_login" type="password" value="">
+                                                            <a href="#" class="center-block text-right no_padding bottom_margin remind_pass"style="color:#29358A"><strong>¿Ha olvidado la contraseña?</strong></a>
+                                                        <div class="login_loading"></div>
+                                                        <div class="dark_border bottom_margin rounded_border">
+                                                                <button type="submit" class="btn btn_wd btn-block btn_light" >
+                                                                <span class="h4">Acceder</span>
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                        
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                  </div>
+                                    <!-- Pacientes -->
+    
+  </div>
+</nav>
+    
+    <h1 style="opacity: 1.0; text-align: center;">Nosotros</h1>
+<p style="text-align: justify; margin: 20px; font-family: monospace">Somos un grupo de estudiantes los cuales compartimos intereses comunes y decidimos emprender con este proyecto, que tiene como finalidad satisfacer las necesidades que tiene tanto el paciente como el doctor, con la ayuda de la tecnología y las habilidades de nuestro equipo mediante una plataforma web.</p>
+ 
+<h2 style="opacity: 1.0; text-align: center;">Problematica</h2>
+
+<center><p style="text-align: justify; margin: 20px; font-family: monospace">Nuestro producto surge por la coyuntura actual que atraviesa el país y las deficiencias que presenta, está dirigido para el sector de salud, tiene como objetivo, facilitar y cubrir necesidades a dos tipos de públicos tanto al paciente, como a un profesional de salud. En primer lugar, para el paciente permitir reservar una cita de forma remota, la cual agiliza y evita la saturación de los sistemas actuales al tener que acercarse presencialmente o mediante una llamada telefónica, otra de ellas es buscar el centro de salud más cercano a su ubicación o de su interés, así como también un detalle de cada clínica con sus respectivas especialidades. Con respecto al profesional de salud, se podrá cargar el historial médico de cada paciente a una base de datos, lo cual ayuda de manera significativa al seguimiento médico, visualizar las citas programadas que tiene en el día, y el stock de cada medicamento de su centro de labor. Para este sistema tanto el paciente, como el profesional de salud, necesitarán que loguearse previo registro, las opciones visibles, serán de acuerdo con el tipo de usuario.</p></center>
+ 
+<center><img src="https://i.imgur.com/FAy5oQA.jpg" width="162" height="162" style="opacity:0.7;"><img src="https://i.imgur.com/XzgTxta.jpg" width="162" height="162" style="opacity:0.7;"><img src="https://i.imgur.com/Fn9kwr2.jpg" width="162" height="162" style="opacity:0.7;"><img src="https://i.imgur.com/LqYvHwx.jpg" width="162" height="162" style="opacity:0.7;"><img src="https://i.imgur.com/kjnuUdV.jpg" width="162" height="162" style="opacity:0.7;"><img src="https://i.imgur.com/PHAoaae.jpg" width="162" height="162" style="opacity:0.7;"></center>
+    
+                                        
+
+ 
+
+    <script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/fontawesome.min.js}"></script>
+   
+  </body>
+</html>
