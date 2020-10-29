@@ -18,5 +18,11 @@ public class IndexController {
 		model.addAttribute("saludo", saludo);
 		return "index";
 	}
+	
+	@GetMapping
+	public String inicio() 
+	{
+		return "clientes/inicio";
+	}
 
 }
