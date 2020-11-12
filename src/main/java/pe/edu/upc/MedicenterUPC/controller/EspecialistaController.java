@@ -18,23 +18,28 @@ import pe.edu.upc.MedicenterUPC.services.EspecialistaService;
 @RequestMapping("/especialistas")
 @SessionAttributes("{especialista,clinica}")
 public class EspecialistaController {
-
+	
 	@Autowired
 	private EspecialistaService especialistaService;
-
-	@PostMapping("busca")
-	public String busca(@ModelAttribute("especialista") Especialista especialista
-			,@ModelAttribute("clinica") Clinica clinica, Model model) {
-
-		model.addAttribute("especialista", especialista);
-		model.addAttribute("especialista",especialista);
-		try {
+	
+	@PostMapping("search")
+	public String search(@ModelAttribute("especialista")Especialista especialista,@ModelAttribute("clinica") Clinica clinica, Model model) {
+	
+		 
+             model.addAttribute("especialista",especialista);
+             model.addAttribute("clinica",clinica);
+		
+		try
+		{
 			List<Especialista> especialistas = especialistaService.findByNombres(especialista.getNombres());
 			model.addAttribute("especialistas", especialistas);
-
-		} catch (Exception e) {
+			
+		}
+		catch (Exception e)
+		{
 			e.printStackTrace();
 		}
-		return "especialistas/busqueda";
+		return "especialistas/busquedaEspecialista";
 	}
+
 }

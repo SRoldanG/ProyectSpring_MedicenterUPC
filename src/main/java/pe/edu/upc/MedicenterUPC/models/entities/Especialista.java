@@ -28,6 +28,9 @@ public class Especialista
 	@Column(name = "nombres", length = 40, nullable = false)
 	private String nombres;
 	
+	@Column(name = "foto", nullable = false, length = 80)
+	private String foto;
+	
 	@ManyToOne			
 	@JoinColumn(name = "distrito_id")
 	private Distrito distrito;
@@ -147,5 +150,12 @@ public class Especialista
 		this.direccion = direccion;
 	}
 
-	
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
 }

@@ -40,7 +40,7 @@
 					<i class="fas fa-search"></i>
 				</button>
 			</form>
-			<form th:action="@{/especialistas/busca}" th:object="${especialista}"
+			<form th:action="@{/especialistas/search}" th:object="${especialista}"
 				method="post" class="form-inline">
 				<input th:field="*{nombres}" class="form-control mr-sm-2" type="search"
 					placeholder="Buscar por Especialista" aria-label="Search">
