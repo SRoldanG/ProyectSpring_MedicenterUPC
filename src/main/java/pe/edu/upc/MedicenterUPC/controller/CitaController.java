@@ -12,7 +12,7 @@ import pe.edu.upc.MedicenterUPC.models.entities.Cita;
 
 @Controller
 @RequestMapping("/citas")
-@SessionAttributes("{clinica, detalleCita}")
+@SessionAttributes("{clinica, doctor, detalleCita}")
 public class CitaController {
 	@PostMapping("agregarcita")
 	public String agregarCita(@ModelAttribute("cita") Cita cita,

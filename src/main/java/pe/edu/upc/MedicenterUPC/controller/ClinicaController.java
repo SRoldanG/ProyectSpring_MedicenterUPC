@@ -21,15 +21,14 @@ import pe.edu.upc.MedicenterUPC.services.ClinicaService;
 
 @Controller
 @RequestMapping("/clinicas")
-@SessionAttributes("{clinica, especialista, clinicaCita, detalleCita}")
+@SessionAttributes("{clinica, doctor, clinicaCita, detalleCita}")
 public class ClinicaController {
 	@Autowired
 	private ClinicaService clinicaService;
 	@PostMapping("search")
 	public String search(@ModelAttribute("clinica") Clinica clinica,
-			@ModelAttribute("especialista") Especialista especialista, Model model) {
+			@ModelAttribute("doctor") Especialista doctor, Model model) {
 		model.addAttribute("clinica", clinica);
-		model.addAttribute("especialista",especialista);
 		try {
 			List<Clinica> clinicas = clinicaService.findByNombrec(clinica.getNombrec());
 			model.addAttribute("clinicas", clinicas);
@@ -40,7 +39,8 @@ public class ClinicaController {
 	}
 	
 	@GetMapping("{nombrec}-{idC}/p")
-	public String view(@ModelAttribute("clinica") Clinica clinica, @PathVariable("idC") Integer idC, Model model) {
+	public String view(@ModelAttribute("clinica") Clinica clinica, @PathVariable("idC") Integer idC, 
+			@ModelAttribute("doctor") Especialista doctor,Model model) {
 		model.addAttribute("clinica", clinica);
 		try {
 			Optional<Clinica> optional = clinicaService.findById(idC);
