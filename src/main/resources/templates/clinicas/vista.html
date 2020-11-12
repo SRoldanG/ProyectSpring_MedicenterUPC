@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head(~{::title})">
+<title>Delivery - Result Search</title>
+</head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<main>
+		<section class="container">
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item">Home</li>
+					<li class="breadcrumb-item" th:text="'Clinica'">Library</li>
+					<li class="breadcrumb-item active" aria-current="page"
+						th:text="${clinicaCita.nombrec}">Data</li>
+				</ol>
+			</nav>
+			<div style="display: flex; width: 120%; margin-left: -120px;">
+				<div class="card" style="width: 30%;">
+					<h5 class="card-header" th:text="${clinicaCita.nombrec}">nombre</h5>
+					<div class="card-body">
+						<img
+							th:src="@{${clinicaCita.imagen} + ${clinicaCita.idC} + '.jpg'}"
+							class="card-img-top" alt="...">
+						<h5></h5>
+						<h5>Ubicacion:</h5>
+						<h5 class="card-title">
+							<span
+								th:text="${clinicaCita.ubicacion}+' - '+${clinicaCita.distrito.nombre}+' - '+${clinicaCita.distrito.provincia}"></span>
+						</h5>
+						<p class="card-text">
+							Horario de Atencion: <span th:text="${clinicaCita.horario}"></span>
+						</p>
+					</div>
+
+				</div>
+				<div class="card" style="width: 36%;">
+					<h5 class="card-header" th:text="'Especialista Medico'">Especialista</h5>
+					<div class="card-body">
+
+						<form id="form-agregarcita" th:action="@{/citas/agregarcita}"
+							th:object="${detalleCita}" method="post">
+							<div class="form-group row">
+
+								<label for="especialista" class="col-sm-3 col-form-label">Seleccione
+									Especialista: </label>
+								<div class="col-sm-9">
+									<select th:field="*{especialista}" class="form-control">
+										<option th:each="especialista : ${clinicaCita.especialistas}"
+											th:value="${id_especialista}"
+											th:text="${especialista.nombres}+' --- '+ ${especialista.especialidad.nombre}">
+										</option>
+										
+									</select>
+									
+								</div>
+							</div>
+
+						</form>
+					</div>
+				</div>
+				<div class="card" style="width: 35%;">
+					<h5 class="card-header" th:text="'Reservar Cita'">Cita</h5>
+					<div class="card-body">
+
+						<form id="form-agregarcita" th:action="@{/citas/agregarcita}"
+							th:object="${detalleCita}" method="post">
+
+							<div class="form-group row">
+								<label for="especialista" class="col-sm-3 col-form-label">Seleccione
+									Fecha: </label>
+								<div class="col-sm-9">
+									<input type="date" class="form-control" th:field="*{fecha}"
+										placeholder="">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="especialista" class="col-sm-3 col-form-label">Seleccione
+									Hora: </label>
+								<div class="col-sm-9">
+									<input type="time" class="form-control" th:field="*{hora}"
+										placeholder="">
+								</div>
+							</div>
+							<p class="card-text">
+								<span
+									th:text="'Tipo de Consulta'+' ----------'+'Duracion'+'-----------'+'Precio'"></span>
+							</p>
+							<p class="card-text">
+								<span
+									th:text="${detalleCita.tipo_cita}+' --------------- '+${detalleCita.duracion}+'---------- S/. '+${detalleCita.precio}"></span>
+							</p>
+							<div class="form-group text-center">
+								<button type="submit" class="btn btn-secondary">
+									<i class="fas fa-ambulance"></i> Reservar Cita
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

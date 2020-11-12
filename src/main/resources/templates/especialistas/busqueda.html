@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head(~{::title})">
+<title>Delivery - Result Search</title>
+</head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<main>
+		<section class="container">
+            <h3>
+
+            </h3>
+            <div style="display:flex;">
+            <div th:each="especialista : ${especialistas}" class="card" style="width: 18rem; margin:10px;">
+              <div class="card-body">
+                <h5 class="card-title" >
+                    <a >
+                        <span th:text="${especialista.nombres}"></span>
+                    </a>
+                </h5>
+              </div>
+            </div>
+        </div>
+
+        </section>
+	</main>
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
