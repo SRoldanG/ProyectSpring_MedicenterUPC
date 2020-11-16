@@ -17,6 +17,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name = "pacientes")
 public class Paciente
@@ -44,15 +46,19 @@ public class Paciente
 	@Column(name = "dni", length = 8, nullable = false)
 	private String dni;
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "nacimiento", nullable = false)
-	@Temporal(TemporalType.TIME)
+	@Temporal(TemporalType.DATE)
 	private Date nacimiento;	
     
     @OneToMany(mappedBy="paciente")
     private List<Cita> citas;
 
+    @OneToMany(mappedBy="paciente")
+    private List<Receta> recetas;
+    
 	public Paciente() {
-		citas= new ArrayList<>();}
+		citas= new ArrayList<>(); recetas= new ArrayList<>();}
 
 	public Integer getId_paciente() {
 		return id_paciente;
@@ -124,6 +130,14 @@ public class Paciente
 
 	public void setCitas(List<Cita> citas) {
 		this.citas = citas;
+	}
+
+	public List<Receta> getRecetas() {
+		return recetas;
+	}
+
+	public void setRecetas(List<Receta> recetas) {
+		this.recetas = recetas;
 	}
     
     

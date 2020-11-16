@@ -9,21 +9,21 @@
 		<section class="container">
 			<nav aria-label="breadcrumb">
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item">Home</li>
-					<li class="breadcrumb-item" th:text="'Clinica'">Library</li>
-					<li class="breadcrumb-item active" aria-current="page"
-						th:text="${clinicaCita.nombrec}">Data</li>
+					<li class="breadcrumb-item"> Inicio</li> 
+					<li class="breadcrumb-item"> <a th:href="@{'/clinicas/allclinicas/'}"> Clinica</a> </li>
+					<li class="breadcrumb-item" th:text="${clinicaCita.nombrec}"> </li>
+					<li class="breadcrumb-item active">Reserva de Cita</li>
 				</ol>
 			</nav>
 			<div style="display: flex; width: 120%; margin-left: -120px;">
-				<div class="card" style="width: 30%;">
+				<div class="card" align="center" style="width: 30%;">
 					<h5 class="card-header" th:text="${clinicaCita.nombrec}">nombre</h5>
 					<div class="card-body">
-						<img
+						<img style="margin-top: 50px"
 							th:src="@{${clinicaCita.imagen} + ${clinicaCita.idC} + '.jpg'}"
 							class="card-img-top" alt="...">
 						<h5></h5>
-						<h5>Ubicacion:</h5>
+						<h5 style="margin-top: 70px">Ubicacion:</h5>
 						<h5 class="card-title">
 							<span
 								th:text="${clinicaCita.ubicacion}+' - '+${clinicaCita.distrito.nombre}+' - '+${clinicaCita.distrito.provincia}"></span>
@@ -34,73 +34,92 @@
 					</div>
 
 				</div>
-				<div class="card" style="width: 36%;">
-					<h5 class="card-header" th:text="'Especialista Medico'">Especialista</h5>
-					<div class="card-body">
+				<form th:action="@{/citas/agregarcita}" th:object="${detalleCita}"
+					method="post">
 
-						<form id="form-agregarcita" th:action="@{/citas/agregarcita}"
-							th:object="${detalleCita}" method="post">
-							<div class="form-group row">
+					<div style="display: flex; width: 110%;">
+						<div class="card" style="width: 55%;" align="center">
+							<h5 class="card-header" th:text="'Especialista Medico'">Especialista</h5>
+							<div class="card-body" align="center">
+								<div class="form-group row">
 
-								<label for="especialista" class="col-sm-3 col-form-label">Seleccione
-									Especialista: </label>
-								<div class="col-sm-9">
-									<select th:field="*{especialista}" class="form-control">
-										<option th:each="especialista : ${clinicaCita.especialistas}"
-											th:value="${id_especialista}"
-											th:text="${especialista.nombres}+' --- '+ ${especialista.especialidad.nombre}">
-										</option>
-										
-									</select>
-									
+									<label for="especialista" class="col-sm-3 col-form-label">Seleccione
+										Especialista: </label>
+									<div class="col-sm-9">
+										<select th:field="*{especialista}" class="form-control">
+											<option th:each="especialista : ${clinicaCita.especialistas}"
+												th:value="${especialista.id_especialista}"
+												th:text="${especialista.nombres}+' --- '+ ${especialista.especialidad.nombre}">
+											</option>
+										</select>
+									</div>
+								</div>
+								<div style="display: flex;" align="center">
+									<div th:each="especialista : ${especialistas}" class="card" 
+										 align="center" style="width: 13rem; margin: auto; height: 26rem; align-content: center;">
+										<img style="height: 15rem"
+											th:src="@{${especialista.foto} + ${especialista.id_especialista}+ '.jpg'}"
+											class="card-img-top" alt="...">
+										<div class="card-body">
+											<h5 class="card-title">
+												<a> <span
+													th:text="${especialista.nombres}+'   '+${especialista.apellidos}"></span>
+												</a>
+											</h5>
+											<h6 class="card-subtitle mb-2 text-muted" th:text="'Tiempo de Experiencia:'"></h6>
+											<h6 class="card-subtitle mb-2 text-muted" th:text="${especialista.tiempo_experiencia}+' años '"></h6>
+											<p  class="card-text text-center " th:text="'Especialidad: ' + ${especialista.especialidad.nombre}"></p>
+										</div>
+									</div>
 								</div>
 							</div>
+						</div>
+						<div align="center" class="card" style="width: 55%;">
+							<h5 class="card-header" th:text="'Reservar Cita'">Cita</h5>
+							<div class="card-body">
+								<div class="form-group row">
+									<label for="especialista" class="col-sm-3 col-form-label">Seleccione
+										Fecha: </label>
+									<div class="col-sm-9">
+										<input type="date" class="form-control" th:field="*{fecha}"
+											placeholder="">
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="especialista" class="col-sm-3 col-form-label">Seleccione
+										Hora: </label>
+									<div class="col-sm-9">
+										<input type="time" class="form-control" th:field="*{hora}"
+											placeholder="">
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="especialista" class="col-sm-3 col-form-label">Tipo
+										de Consulta </label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control"
+											th:field="*{tipo_cita}" placeholder="Descripcion de Consulta">
+									</div>
+								</div>
 
-						</form>
+								<p class="card-text">
+									<span
+										th:text="'Duracion: '+${detalleCita.duracion}+' ------------- '+'Precio: S/. '+${detalleCita.precio}"></span>
+								</p>
+
+								<div class="form-group text-center">
+									<button type="submit" class="btn btn-secondary">
+										<i class="fas fa-ambulance"></i> Reservar Cita
+									</button>
+								</div>
+
+							</div>
+						</div>
 					</div>
-				</div>
-				<div class="card" style="width: 35%;">
-					<h5 class="card-header" th:text="'Reservar Cita'">Cita</h5>
-					<div class="card-body">
-
-						<form id="form-agregarcita" th:action="@{/citas/agregarcita}"
-							th:object="${detalleCita}" method="post">
-
-							<div class="form-group row">
-								<label for="especialista" class="col-sm-3 col-form-label">Seleccione
-									Fecha: </label>
-								<div class="col-sm-9">
-									<input type="date" class="form-control" th:field="*{fecha}"
-										placeholder="">
-								</div>
-							</div>
-							<div class="form-group row">
-								<label for="especialista" class="col-sm-3 col-form-label">Seleccione
-									Hora: </label>
-								<div class="col-sm-9">
-									<input type="time" class="form-control" th:field="*{hora}"
-										placeholder="">
-								</div>
-							</div>
-							<p class="card-text">
-								<span
-									th:text="'Tipo de Consulta'+' ----------'+'Duracion'+'-----------'+'Precio'"></span>
-							</p>
-							<p class="card-text">
-								<span
-									th:text="${detalleCita.tipo_cita}+' --------------- '+${detalleCita.duracion}+'---------- S/. '+${detalleCita.precio}"></span>
-							</p>
-							<div class="form-group text-center">
-								<button type="submit" class="btn btn-secondary">
-									<i class="fas fa-ambulance"></i> Reservar Cita
-								</button>
-							</div>
-						</form>
-					</div>
-				</div>
+				</form>
 			</div>
 		</section>
 	</main>
-	<footer th:replace="layout/layout :: footer"></footer>
+	<footer  th:replace="layout/layout :: footer"></footer>
 </body>
 </html>

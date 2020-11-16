@@ -17,7 +17,7 @@
 			<img th:src="@{${especialista.foto} + ${especialista.id_especialista}+ '.jpg'}" class="card-img-top" alt="...">
 			  <div class="card-body">
 			    <h5 class="card-title" >
-			    	<a >
+			    	<a th:href="@{'/especialistas/' + ${especialista.nombres} + '-' + ${especialista.id_especialista} + '/p' }" >
 			    		<span th:text="${especialista.nombres}"></span>
 			    	</a>
 			    </h5>			    

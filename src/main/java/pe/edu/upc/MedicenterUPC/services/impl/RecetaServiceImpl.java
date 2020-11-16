@@ -50,11 +50,6 @@ public class RecetaServiceImpl implements Serializable, RecetaService {
 		return recetaRepository.findById(id);
 	}
 
-	@Transactional(readOnly = true)
-	@Override
-	public List<Receta> findByCita(Integer cita) throws Exception {
-		// TODO Auto-generated method stub
-		return recetaRepository.findByCitaContaining(cita);
-	}
+	
 
 }

@@ -25,6 +25,7 @@ import pe.edu.upc.MedicenterUPC.services.ClinicaService;
 public class ClinicaController {
 	@Autowired
 	private ClinicaService clinicaService;
+
 	@PostMapping("search")
 	public String search(@ModelAttribute("clinica") Clinica clinica,
 			@ModelAttribute("doctor") Especialista doctor, Model model) {
@@ -47,17 +48,33 @@ public class ClinicaController {
 			
 			if(optional.isPresent()) {
 				model.addAttribute("clinicaCita", optional.get());
+				List<Especialista> especialistas= optional.get().getEspecialistas();
+				model.addAttribute("especialistas",especialistas);
 				Cita detalleCita = new Cita();
-				detalleCita.setPrecio((float)70.00);
-				detalleCita.setTipo_cita("Telemedicina");
-				detalleCita.setDuracion("30 min");
-				
+				detalleCita.setDuracion("30 minutos");
+				detalleCita.setPrecio((float)70);
 				model.addAttribute("detalleCita", detalleCita);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "clinicas/vista";
+	}
+	
+	@GetMapping("allclinicas")
+	public String allclinicas(@ModelAttribute("clinica") Clinica clinica,
+			@ModelAttribute("doctor") Especialista doctor, Model model)
+	{
+		model.addAttribute("clinica", clinica);
+		try {
+			List<Clinica> clinicas = clinicaService.findAll();
+			clinicas.remove(clinicaService.findById(1).get());
+			model.addAttribute("allClinicas", clinicas);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "clinicas/lista";
 	}
 	
 }
