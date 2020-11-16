@@ -34,38 +34,43 @@
 
 			<form th:action="@{/clinicas/search}" th:object="${clinica}"
 				method="post" class="form-inline">
-				<input th:field="*{nombrec}" class="form-control mr-sm-2" type="search"
-					placeholder="Buscar por Clinica" aria-label="Search">
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-					<i class="fas fa-search"></i>
-				</button>
-			</form>
-			
-			<form th:action="@{/especialistas/search}" th:object="${doctor}"
-				method="post" class="form-inline">
-				<input th:field="*{nombres}" class="form-control mr-sm-2" type="search"
-					placeholder="Buscar por Especialista" aria-label="Search">
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+				<input th:field="*{nombrec}" class="form-control mr-sm-2"
+					type="search" placeholder="Buscar por Clinica" aria-label="Search">
+				<button style="margin-left: -7px"
+					class="btn btn-outline-success my-2 my-sm-0" type="submit">
 					<i class="fas fa-search"></i>
 				</button>
 			</form>
 
-			<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<form style="margin-left: 12px" th:action="@{/especialistas/search}"
+				th:object="${doctor}" method="post" class="form-inline">
+				<input th:field="*{nombres}" class="form-control mr-sm-2"
+					type="search" placeholder="Buscar por Especialista"
+					aria-label="Search">
+				<button style="margin-left: -7px"
+					class="btn btn-outline-success my-2 my-sm-0" type="submit">
+					<i class="fas fa-search"></i>
+				</button>
+			</form>
+
+			<div style="margin-left: 50px" class="collapse navbar-collapse"
+				id="navbarNavDropdown">
 				<ul class="navbar-nav">
 					<li class="nav-item active"><a class="nav-link" href="#">Inicio
 							<span class="sr-only">(current)</span>
 					</a></li>
 					<li class="nav-item"><a class="nav-link"
 						th:href="@{/Nosotros}">Nosotros</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Categorias</a>
-					</li>
+				
 
-					<li class="nav-item"><a class="nav-link" href="#">Contacto</a>
+					<li class="nav-item"><a class="nav-link" th:href="@{'/clinicas/allclinicas/'}">Clinicas</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/logout}">Cerrar Sesion</a>
 					</li>
 
 				</ul>
 
-				<div style="margin-left: 380px;">
+				<div style="margin-left: 330px;">
 					<li class="dropdown dropdown_login"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#"> <span class="item"
 							style="color: #BDA51A;"><img
@@ -81,14 +86,14 @@
 										style="color: #29358A">Mi zona privada</span>
 								</div>
 								<div class="item text-nowrap">
-									<form method="post" action="#" class="header_login_form">
+									<form th:action="@{/signin}" method="post" class="header_login_form">
 
 										<div class="login_message"></div>
 										Nombre de usuario o e-mail <input
 											class="form-control bottom_margin bg_medium"
-											name="email_login" value="" type="text"> Contraseña <input
+											name="username" id="username" value="" type="text"> Contraseña <input
 											class="form-control bottom_margin bg_medium"
-											name="password_login" type="password" value=""> <a
+											name="password" id="password"  type="password" value=""> <a
 											href="#"
 											class="center-block text-right no_padding bottom_margin remind_pass"
 											style="color: #29358A"><strong>¿Ha olvidado la
@@ -122,14 +127,14 @@
 										style="color: #29358A">Mi zona privada</span>
 								</div>
 								<div class="item text-nowrap">
-									<form method="post" action="#" class="header_login_form">
+									<form th:action="@{/signin}" method="post" class="header_login_form">
 
 										<div class="login_message"></div>
 										Nombre de usuario o e-mail <input
+											class="form-control bottom_margin bg_medium" name="username" id="username"
+											 value="" type="text"> Contraseña <input
 											class="form-control bottom_margin bg_medium"
-											name="email_login" value="" type="text"> Contraseña <input
-											class="form-control bottom_margin bg_medium"
-											name="password_login" type="password" value=""> <a
+											name="password" id="password" type="password" value=""> <a
 											href="#"
 											class="center-block text-right no_padding bottom_margin remind_pass"
 											style="color: #29358A"><strong>¿Ha olvidado la

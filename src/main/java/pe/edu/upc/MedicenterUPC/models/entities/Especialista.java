@@ -58,8 +58,12 @@ public class Especialista
     @OneToMany(mappedBy="especialista")
     private List<Cita> citas;
     
+    @OneToMany(mappedBy="especialista")
+    private List<Receta> recetas;
+    
 	public Especialista() {
 		citas= new ArrayList<>();
+		recetas= new ArrayList<>();
 	}
 
 	public Integer getId_especialista() {
@@ -156,6 +160,14 @@ public class Especialista
 
 	public void setFoto(String foto) {
 		this.foto = foto;
+	}
+
+	public List<Receta> getRecetas() {
+		return recetas;
+	}
+
+	public void setRecetas(List<Receta> recetas) {
+		this.recetas = recetas;
 	}
 
 }

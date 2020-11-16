@@ -1,9 +1,9 @@
 package pe.edu.upc.MedicenterUPC.models.entities;
 
 
-import java.util.ArrayList;
+
 import java.util.Date;
-import java.util.List;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,10 +12,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "citas")
@@ -37,20 +38,21 @@ public class Cita {
 	@Column(name = "duracion", nullable = false, length = 40)
 	private String duracion;
 	
-	@Column(name = "hora", nullable = false, length = 10)
-	private String hora;
-	@Column(name = "fecha", nullable = false)
+	@DateTimeFormat(pattern = "HH:mm")
+	@Column(name = "hora", nullable = false)
 	@Temporal(TemporalType.TIME)
+	private Date hora;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column(name = "fecha", nullable = false)
+	@Temporal(TemporalType.DATE)
 	private Date fecha;
 	
 	@Column(name = "precio", nullable = false)
 	private Float precio;
-	
-	@OneToMany(mappedBy="cita")
-	private List<Receta> recetas;
-	
+
 	public Cita() {
-		recetas= new ArrayList<>();
+		
 	}
 
 	public Integer getIdCita() {
@@ -85,11 +87,12 @@ public class Cita {
 		this.tipo_cita = tipo_cita;
 	}
 
-	public String getHora() {
+
+	public Date getHora() {
 		return hora;
 	}
 
-	public void setHora(String hora) {
+	public void setHora(Date hora) {
 		this.hora = hora;
 	}
 
@@ -107,14 +110,6 @@ public class Cita {
 
 	public void setPrecio(Float precio) {
 		this.precio = precio;
-	}
-
-	public List<Receta> getRecetas() {
-		return recetas;
-	}
-
-	public void setRecetas(List<Receta> recetas) {
-		this.recetas = recetas;
 	}
 
 	public String getDuracion() {

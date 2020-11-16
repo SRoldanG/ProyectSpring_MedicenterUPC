@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 import pe.edu.upc.MedicenterUPC.models.entities.Receta;
 @Repository
 public interface RecetaRepository extends JpaRepository<Receta,Integer> {
-	List<Receta> findByCitaContaining(Integer cita) throws Exception;
+	
 }

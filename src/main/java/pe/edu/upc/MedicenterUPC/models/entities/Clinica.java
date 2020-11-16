@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -38,8 +40,12 @@ public class Clinica {
 	@OneToMany(mappedBy="clinica")
 	private List<Especialista> especialistas;
 	
-	@OneToMany(mappedBy="clinica")
-	private List<MedicamentosXClinica> medicamentos;
+	@ManyToMany
+	@JoinTable(name = "clinica_medicamento", 
+		joinColumns = { @JoinColumn(name = "clinica_id", referencedColumnName = "idC") },
+		inverseJoinColumns = { @JoinColumn(name = "medicamento_id", referencedColumnName = "Id") })
+	private List<Medicamento> medicamentos;
+	
 
 	public Clinica() {
 		especialistas= new ArrayList<>();
@@ -95,11 +101,11 @@ public class Clinica {
 		this.especialistas = especialistas;
 	}
 
-	public List<MedicamentosXClinica> getMedicamentos() {
+	public List<Medicamento> getMedicamentos() {
 		return medicamentos;
 	}
 
-	public void setMedicamentos(List<MedicamentosXClinica> medicamentos) {
+	public void setMedicamentos(List<Medicamento> medicamentos) {
 		this.medicamentos = medicamentos;
 	}
 
