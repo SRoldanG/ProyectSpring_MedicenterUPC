@@ -52,6 +52,16 @@
 					<i class="fas fa-search"></i>
 				</button>
 			</form>
+			
+<!-- 			<form th:action="@{/especialidades/search}" th:object="${especialidad}" -->
+<!-- 				method="post" class="form-inline"> -->
+<!-- 				<input th:field="*{nombre}" class="form-control mr-sm-2" -->
+<!-- 					type="search" placeholder="Buscar por Clinica" aria-label="Search"> -->
+<!-- 				<button style="margin-left: -7px" -->
+<!-- 					class="btn btn-outline-success my-2 my-sm-0" type="submit"> -->
+<!-- 					<i class="fas fa-search"></i> -->
+<!-- 				</button> -->
+<!-- 			</form> -->
 
 			<div style="margin-left: 50px" class="collapse navbar-collapse"
 				id="navbarNavDropdown">
@@ -69,143 +79,133 @@
 					</li>
 
 				</ul>
-
-				<div style="margin-left: 330px;">
-					<li class="dropdown dropdown_login"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#"> <span class="item"
-							style="color: #BDA51A;"><img
-								src="https://i.imgur.com/gHAQwgr.png" width="40" height="40"><u>Soy
-									doctor</u></span>
-					</a>
-
-						<ul class="dropdown-menu"
-							style="background-color: #898181; opacity: 1.5;">
-							<li style="margin: 0px 25px" class="login_form">
-								<div class="text-primary top_margin bottom_margin">
-									<span class="h4 font_Conv_Roboto-Regular"
-										style="color: #29358A">Mi zona privada</span>
-								</div>
-								<div class="item text-nowrap">
-									<form th:action="@{/signin}" method="post" class="header_login_form">
-
-										<div class="login_message"></div>
-										Nombre de usuario o e-mail <input
-											class="form-control bottom_margin bg_medium"
-											name="username" id="username" value="" type="text"> Contraseña <input
-											class="form-control bottom_margin bg_medium"
-											name="password" id="password"  type="password" value=""> <a
-											href="#"
-											class="center-block text-right no_padding bottom_margin remind_pass"
-											style="color: #29358A"><strong>¿Ha olvidado la
-												contraseña?</strong></a>
-										<div class="login_loading"></div>
-										<div class="dark_border bottom_margin rounded_border">
-											<button type="submit" class="btn btn_wd btn-block btn_light">
-												<span class="h4">Acceder</span>
-											</button>
-										</div>
-									</form>
-
-								</div>
-							</li>
-						</ul></li>
+				
 				</div>
-				<!-- Patients -->
-				<div style="margin-left: 0px;">
-					<li class="dropdown dropdown_login"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#"> <span class="item"
-							style="color: #BDA51A;"><img
-								src="https://i.imgur.com/ECDm4tb.png" width="40" height="40"><u>Soy
-									paciente</u></span>
-					</a>
 
-						<ul class="dropdown-menu"
-							style="background-color: #898181; opacity: 1.5;">
-							<li style="margin: 0px 25px" class="login_form">
-								<div class="text-primary top_margin bottom_margin">
-									<span class="h4 font_Conv_Roboto-Regular"
-										style="color: #29358A">Mi zona privada</span>
-								</div>
-								<div class="item text-nowrap">
-									<form th:action="@{/signin}" method="post" class="header_login_form">
 
-										<div class="login_message"></div>
-										Nombre de usuario o e-mail <input
-											class="form-control bottom_margin bg_medium" name="username" id="username"
-											 value="" type="text"> Contraseña <input
-											class="form-control bottom_margin bg_medium"
-											name="password" id="password" type="password" value=""> <a
-											href="#"
-											class="center-block text-right no_padding bottom_margin remind_pass"
-											style="color: #29358A"><strong>¿Ha olvidado la
-												contraseña?</strong></a>
-										<div class="login_loading"></div>
-										<div class="dark_border bottom_margin rounded_border">
-											<button type="submit" class="btn btn_wd btn-block btn_light">
-												<span class="h4">Acceder</span>
-											</button>
-										</div>
-									</form>
-
-								</div>
-							</li>
-						</ul></li>
-				</div>
-				<!-- Pacientes -->
-
-			</div>
+                 <div style="padding-right:25px">   
+  <form class="form-inline">
+   <button class="btn btn-outline-success" type="button">Iniciar sesion<br></button>
+  </form></div>
+  <div><form class="form-inline">
+    <button class="btn btn-outline-success" type="button">Registrarse</button>
+  </form></div>
+  
+   
 		</nav>
 	</header>
 
 	<main>
-		<section>Hello Programmers</section>
+		<section>
+		
+		
+	
+		
+		</section>
 	</main>
 
-	<footer th:fragment="footer">
+	<footer class="page-footer font-small blue pt-4"  style="background-color:#0A0222">
 
-		<div class="row footer-bottom">
+  <!-- Footer Links -->
+  <div class="container-fluid text-center text-md-left">
 
+    <!-- Grid row -->
+    <div class="row">
 
-			<div class="col-md-6 text-right">
-				<h6>
-					<a href="#" style="color: #3b5998" target="_blank"><i
-						class="icon ion-social-facebook"></i> FACEBOOK</a>
-				</h6>
-				<h6>
-					<a href="#" style="color: #1da1f2"><i
-						class="icon ion-social-twitter"></i> TWITTER</a>
-				</h6>
-				<h6>
-					<a href="#" style="color: #393939"><i
-						class="icon ion-social-instagram"></i> INSTAGRAM</a>
-				</h6>
-				<h6>
-					<a href="#" style="color: #e62117"><i
-						class="icon ion-social-youtube"></i> YOUTUBE</a>
-				</h6>
-			</div>
-		</div>
-		<!-- end footer-bottom -->
+      <!-- Grid column -->
+      <div class="col-md-6 mt-md-0 mt-3">
 
-		<div class="row footer-bottom">
-			<div class="col-md-12">
-				<p style="color: #29358A;">
-					<a href="politicas">Términos y Condiciones</a>
-				</p>
-			</div>
-		</div>
-		<!-- end footer-bottom -->
+        <!-- Content -->
+        <h5 class="text-uppercase" style="color:#2FB006">Acerca de Nosotros</h5><br>
+        <p style="color: #FFFFFF"><img src="https://i.imgur.com/XY2eBOT.png" width="20" height="20">www.medicenter.com</p>
+        <p style="color: #FFFFFF"><img src="https://i.imgur.com/iHTKgWq.png" width="20" height="20">medicenter@gmail.com</p>
 
-		<!-- end container -->
+       
+
+      </div>
+      <!-- Grid column -->
+      
+      
+
+      <hr class="clearfix w-100 d-md-none pb-3">
 
 
-		<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
-		<script th:src="@{/js/popper.min.js}"></script>
-		<script th:src="@{/js/bootstrap.min.js}"></script>
-		<script th:src="@{/js/chosen.jquery.min.js}"></script>
-		<script th:src="@{/js/fontawesome.min.js}"></script>
-		<script th:src="@{/js/sweetalert.min.js}"></script>
-	</footer>
+
+      <!-- Grid column -->
+      <div class="col-md-3 mb-md-0 mb-3">
+
+        <!-- Links -->
+        <h5 class="text-uppercase" style="color:#2FB006">Especialidades</h5>
+
+        <ul class="list-unstyled">
+          <li style="color: #FFFFFF">
+            <a href="#!"><button class="btn btn-sm btn-outline-secondary" type="button">Neurologia</button></a>
+            <a href="#!"><button class="btn btn-sm btn-outline-secondary" type="button">Pediatria</button></a>
+            <a href="#!"><button class="btn btn-sm btn-outline-secondary" type="button">Ginecologia</button></a>
+            <a href="#!"><button class="btn btn-sm btn-outline-secondary" type="button">Cardiologia</button></a>
+          </li >
+          <li style="color: #FFFFFF">
+            <a href="#!"><button class="btn btn-sm btn-outline-secondary" type="button">Cirugia</button></a>
+            <a href="#!"><button class="btn btn-sm btn-outline-secondary" type="button">Traumatologia</button></a>
+            <a href="#!"><button class="btn btn-sm btn-outline-secondary" type="button">Odontologia</button></a>
+            <a href="#!"><button class="btn btn-sm btn-outline-secondary" type="button">Medicina General</button></a>
+            
+          </li >
+          <li style="color: #FFFFFF">
+            <a href="#!"><button class="btn btn-sm btn-outline-secondary" type="button">Oncologia</button></a>
+            <a href="#!"><button class="btn btn-sm btn-outline-secondary" type="button">Urologia</button></a>
+            <a href="#!"><button class="btn btn-sm btn-outline-secondary" type="button">Podologia</button></a>
+            <a href="#!"><button class="btn btn-sm btn-outline-secondary" type="button">Infectologia</button></a>
+          </li >
+          <li style="color: #FFFFFF">
+            <a href="#!"><button class="btn btn-sm btn-outline-secondary" type="button">Nutricion</button></a>
+            <a href="#!"><button class="btn btn-sm btn-outline-secondary" type="button">Fisioterapia</button></a>
+            <a href="#!"><button class="btn btn-sm btn-outline-secondary" type="button">Psicologia</button></a>
+            <a href="#!"><button class="btn btn-sm btn-outline-secondary" type="button">Oftamologia</button></a>
+          </li >
+        </ul>
+        
+        
+
+      </div>
+      <!-- Grid column -->
+      
+      
+
+      <!-- Grid column -->
+      <div class="col-md-3 mb-md-0 mb-3">
+
+        <!-- Links -->
+        <h5 class="text-uppercase" style="color:#2FB006">Contacto</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="#!"><img  src="https://i.imgur.com/nHiXPR7.png" width="25" height="25"></a>
+          </li>
+          <li>
+            <a href="#!"><img  src="https://i.imgur.com/koP0xez.png" width="25" height="25"></a>
+          </li>
+          <li>
+            <a href="#!"><img  src="https://i.imgur.com/Vqzqrsr.png" width="25" height="25"></a>
+          </li>
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Links -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3" style="color: #FFFFFF">© 2020 Copyright:
+    <a href="https://mdbootstrap.com/"> MediCenter.com</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
 	<!-- Modal -->
 </body>
 </html>

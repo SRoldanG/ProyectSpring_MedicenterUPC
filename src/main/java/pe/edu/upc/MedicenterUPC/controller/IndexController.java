@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import pe.edu.upc.MedicenterUPC.models.entities.Clinica;
+import pe.edu.upc.MedicenterUPC.models.entities.Especialidad;
 import pe.edu.upc.MedicenterUPC.models.entities.Especialista;
 
 @Controller
@@ -20,6 +21,9 @@ public class IndexController {
 		model.addAttribute("clinica",clinica);
 		Especialista doctor = new Especialista();
 		model.addAttribute("doctor", doctor);
+//		Especialidad especialidad = new Especialidad();
+//		model.addAttribute("especialidad", especialidad);
+		
 		
 		return "index";
 	}
