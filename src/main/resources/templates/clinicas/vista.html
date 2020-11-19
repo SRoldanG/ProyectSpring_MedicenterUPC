@@ -7,11 +7,14 @@
 	<header th:replace="layout/layout :: header"></header>
 	<main>
 		<section class="container">
+		
 			<nav aria-label="breadcrumb">
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"> Inicio</li> 
+					<li class="breadcrumb-item"><a th:href="@{'/'}"> Inicio</a></li> 
 					<li class="breadcrumb-item"> <a th:href="@{'/clinicas/allclinicas/'}"> Clinica</a> </li>
-					<li class="breadcrumb-item" th:text="${clinicaCita.nombrec}"> </li>
+					
+					<li class="breadcrumb-item" ><a  th:text="${clinicaCita.nombrec}"></a> </li>
+				
 					<li class="breadcrumb-item active">Reserva de Cita</li>
 				</ol>
 			</nav>
