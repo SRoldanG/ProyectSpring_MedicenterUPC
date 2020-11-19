@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -47,6 +48,12 @@ public class Cita {
 	@Column(name = "fecha", nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date fecha;
+	
+	@Transient
+	private String fecha_texto;
+	
+	@Transient
+	private String hora_texto;
 	
 	@Column(name = "precio", nullable = false)
 	private Float precio;
@@ -118,6 +125,22 @@ public class Cita {
 
 	public void setDuracion(String duracion) {
 		this.duracion = duracion;
+	}
+
+	public String getFecha_texto() {
+		return fecha_texto;
+	}
+
+	public void setFecha_texto(String fecha_texto) {
+		this.fecha_texto = fecha_texto;
+	}
+
+	public String getHora_texto() {
+		return hora_texto;
+	}
+
+	public void setHora_texto(String hora_texto) {
+		this.hora_texto = hora_texto;
 	}
 
 	

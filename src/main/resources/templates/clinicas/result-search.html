@@ -13,21 +13,21 @@
 
 			<div style="display: flex; margin-top: 35px">
 				<div th:each="clinica : ${clinicas}" class="card"
-					style="width: 22rem; margin: 10px; ">
+					style="width: 22rem; margin: 10px;">
 					<img th:src="@{${clinica.imagen} + ${clinica.idC} + '.jpg'}"
 						class="card-img-top" alt="...">
 					<div class="card-body">
-						<h5 class="card-title">
-							<a
-								th:href="@{'/clinicas/' + ${clinica.nombrec} + '-' + ${clinica.idC} + '/p' }">
-								<span th:text="${clinica.nombrec}"></span>
-							</a>
-						</h5>
+						<h5 class="card-title text-center" th:text="${clinica.nombrec}"></h5>
 						<h6 class="card-subtitle mb-2 text-muted" th:text="'UBICACION:'"></h6>
 						<h6 class="card-subtitle mb-2 text-muted"
 							th:text="${clinica.ubicacion}+' - '+${clinica.distrito.nombre}+' - '+${clinica.distrito.provincia}"></h6>
 						<p class="card-text text-right "
 							th:text="'Horario: ' + ${clinica.horario}"></p>
+						
+						<a style="display: compact; margin-left: 29%;"
+								th:href="@{'/clinicas/' + ${clinica.nombrec} + '-' + ${clinica.idC} + '/p' }"
+								class="btn btn-primary">Reserva tu Cita</a>
+						
 					</div>
 				</div>
 			</div>

@@ -1,5 +1,6 @@
  package pe.edu.upc.MedicenterUPC.controller;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,11 +18,12 @@ import pe.edu.upc.MedicenterUPC.models.entities.Cita;
 import pe.edu.upc.MedicenterUPC.models.entities.Clinica;
 import pe.edu.upc.MedicenterUPC.models.entities.Especialista;
 import pe.edu.upc.MedicenterUPC.models.entities.Paciente;
+import pe.edu.upc.MedicenterUPC.models.entities.Usuario;
 import pe.edu.upc.MedicenterUPC.services.CitaService;
 
 @Controller
 @RequestMapping("/citas")
-@SessionAttributes("{clinica, doctor, detalleCita}")
+@SessionAttributes("{clinica, doctor, detalleCita }")
 public class CitaController {
 	
 	@Autowired
@@ -39,7 +41,6 @@ public class CitaController {
 			detalleCita.setPrecio((float)70);
 			citaService.save(detalleCita);
 			Optional<Cita> optional= citaService.findById(detalleCita.getIdCita());
-			
 			model.addAttribute("citaRegistrada",optional.get());
 		
 		} catch (Exception e) {

@@ -9,7 +9,7 @@
 	<section class="container">
 	<nav aria-label="breadcrumb">
 					<ol class="breadcrumb">
-					<li class="breadcrumb-item">Inicio</li>
+					<li class="breadcrumb-item"><a th:href="@{'/'}"> Inicio</a></li>
 					<li class="breadcrumb-item" ><a th:href="@{'/clinicas/allclinicas/'}"> Clinica </a> </li>
 					<li class="breadcrumb-item" aria-current="page" th:text="${citaRegistrada.especialista.clinica.nombrec}">
 					<a ></a>
@@ -62,14 +62,14 @@
 						</p>
 						<h6> <span th:text="${citaRegistrada.tipo_cita}"></span>
 						</h6>
-						<p class="card-text">
+						<p class="card-date">
 							FECHA: <span ></span>
 						</p>
-						<h6> <span th:text="${citaRegistrada.fecha}"></span></h6>
+						<h6> <span  th:text="${detalleCita.fecha}"></span></h6>
 						<p class="card-text">
 							HORA: <span ></span>
 						</p>
-						<h6> <span  th:text="${citaRegistrada.hora}"></span></h6>
+						<h6> <span  th:text="${detalleCita.hora}"></span></h6>
 						<p class="card-text">
 							PRECIO: <span ></span>
 						</p>

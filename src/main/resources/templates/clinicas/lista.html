@@ -9,7 +9,7 @@
 		<section class="container">
 			<nav aria-label="breadcrumb">
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item">Inicio</li>
+					<li class="breadcrumb-item"><a th:href="@{'/'}"> Inicio</a></li>
 					<li class="breadcrumb-item active">Clinica</li>
 				</ol>
 			</nav>
@@ -39,6 +39,9 @@
 								Horario: <span style="margin-left: 12px"
 									th:text="${'10 am hasta 1 am'}"></span>
 							</h6>
+							<a style="display: compact;"
+								th:href="@{'/clinicas/' + 'Dios Milagroso' + '-' + '1' + '/p' }"
+								class="btn btn-primary">Reserva tu Cita</a>
 						</div>
 					</div>
 					<div th:each="clinica : ${allClinicas}" class="carousel-item">
@@ -59,6 +62,9 @@
 								Horario: <span style="margin-left: 12px"
 									th:text="${clinica.horario}"></span>
 							</h6>
+							<a style="display: compact;"
+								th:href="@{'/clinicas/' + ${clinica.nombrec} + '-' + ${clinica.idC} + '/p' }"
+								class="btn btn-primary">Reserva tu Cita</a>
 						</div>
 					</div>
 				</div>

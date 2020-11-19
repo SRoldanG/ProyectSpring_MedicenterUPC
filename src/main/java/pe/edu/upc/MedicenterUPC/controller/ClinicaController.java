@@ -16,15 +16,19 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import pe.edu.upc.MedicenterUPC.models.entities.Cita;
 import pe.edu.upc.MedicenterUPC.models.entities.Clinica;
 import pe.edu.upc.MedicenterUPC.models.entities.Especialista;
+import pe.edu.upc.MedicenterUPC.models.entities.Usuario;
+import pe.edu.upc.MedicenterUPC.repositories.UsuarioRepository;
+import pe.edu.upc.MedicenterUPC.security.UsuarioDetailsService;
 import pe.edu.upc.MedicenterUPC.services.ClinicaService;
-
 
 @Controller
 @RequestMapping("/clinicas")
-@SessionAttributes("{clinica, doctor, clinicaCita, detalleCita}")
+@SessionAttributes("{clinica, doctor, clinicaCita, detalleCita }")
 public class ClinicaController {
 	@Autowired
 	private ClinicaService clinicaService;
+	@Autowired
+	private UsuarioRepository usuarioService;
 
 	@PostMapping("search")
 	public String search(@ModelAttribute("clinica") Clinica clinica,
@@ -38,43 +42,45 @@ public class ClinicaController {
 		}
 		return "clinicas/result-search";
 	}
-	
+
 	@GetMapping("{nombrec}-{idC}/p")
-	public String view(@ModelAttribute("clinica") Clinica clinica, @PathVariable("idC") Integer idC, 
-			@ModelAttribute("doctor") Especialista doctor,Model model) {
+	public String view(@ModelAttribute("clinica") Clinica clinica, @PathVariable("idC") Integer idC,
+			@ModelAttribute("doctor") Especialista doctor, Model model) {
 		model.addAttribute("clinica", clinica);
+		
 		try {
 			Optional<Clinica> optional = clinicaService.findById(idC);
 			
-			if(optional.isPresent()) {
+			if (optional.isPresent()) {
 				model.addAttribute("clinicaCita", optional.get());
-				List<Especialista> especialistas= optional.get().getEspecialistas();
-				model.addAttribute("especialistas",especialistas);
+				List<Especialista> especialistas = optional.get().getEspecialistas();
+				model.addAttribute("especialistas", especialistas);
 				Cita detalleCita = new Cita();
 				detalleCita.setDuracion("30 minutos");
-				detalleCita.setPrecio((float)70);
+				detalleCita.setPrecio((float) 70);
 				model.addAttribute("detalleCita", detalleCita);
+				
 			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "clinicas/vista";
 	}
-	
+
 	@GetMapping("allclinicas")
-	public String allclinicas(@ModelAttribute("clinica") Clinica clinica,
-			@ModelAttribute("doctor") Especialista doctor, Model model)
-	{
-		model.addAttribute("clinica", clinica);
+	public String allclinicas(@ModelAttribute("clinica") Clinica clinica, @ModelAttribute("doctor") Especialista doctor,
+			Model model) {
 		try {
-			List<Clinica> clinicas = clinicaService.findAll();
-			clinicas.remove(clinicaService.findById(1).get());
-			model.addAttribute("allClinicas", clinicas);
+			List<Clinica> lista = clinicaService.findAll();
+			lista.remove(clinicaService.findById(1).get());
+			model.addAttribute("allClinicas", lista);
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return "clinicas/lista";
 	}
-	
+
 }

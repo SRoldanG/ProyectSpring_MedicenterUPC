@@ -59,14 +59,13 @@
 					<li class="nav-item active"><a class="nav-link" href="#">Inicio
 							<span class="sr-only">(current)</span>
 					</a></li>
-					<li class="nav-item"><a class="nav-link"
-						th:href="@{/Nosotros}">Nosotros</a></li>
-				
+					<li class="nav-item"><a class="nav-link">Nosotros</a></li>
 
-					<li class="nav-item"><a class="nav-link" th:href="@{'/clinicas/allclinicas/'}">Clinicas</a>
-					</li>
-					<li class="nav-item"><a class="nav-link" th:href="@{/logout}">Cerrar Sesion</a>
-					</li>
+
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{'/clinicas/allclinicas/'}">Clinicas</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/logout}">Cerrar
+							Sesion</a></li>
 
 				</ul>
 
@@ -86,15 +85,15 @@
 										style="color: #29358A">Mi zona privada</span>
 								</div>
 								<div class="item text-nowrap">
-									<form th:action="@{/signin}" method="post" class="header_login_form">
+									<form th:action="@{/signin}" method="post"
+										class="header_login_form">
 
 										<div class="login_message"></div>
 										Nombre de usuario o e-mail <input
-											class="form-control bottom_margin bg_medium"
-											name="username" id="username" value="" type="text"> Contraseña <input
-											class="form-control bottom_margin bg_medium"
-											name="password" id="password"  type="password" value=""> <a
-											href="#"
+											class="form-control bottom_margin bg_medium" name="username"
+											id="username" value="" type="text"> Contraseña <input
+											class="form-control bottom_margin bg_medium" name="password"
+											id="password" type="password" value=""> <a href="#"
 											class="center-block text-right no_padding bottom_margin remind_pass"
 											style="color: #29358A"><strong>¿Ha olvidado la
 												contraseña?</strong></a>
@@ -127,15 +126,15 @@
 										style="color: #29358A">Mi zona privada</span>
 								</div>
 								<div class="item text-nowrap">
-									<form th:action="@{/signin}" method="post" class="header_login_form">
+									<form th:action="@{/signin}" method="post"
+										class="header_login_form">
 
 										<div class="login_message"></div>
 										Nombre de usuario o e-mail <input
-											class="form-control bottom_margin bg_medium" name="username" id="username"
-											 value="" type="text"> Contraseña <input
-											class="form-control bottom_margin bg_medium"
-											name="password" id="password" type="password" value=""> <a
-											href="#"
+											class="form-control bottom_margin bg_medium" name="username"
+											id="username" value="" type="text"> Contraseña <input
+											class="form-control bottom_margin bg_medium" name="password"
+											id="password" type="password" value=""> <a href="#"
 											class="center-block text-right no_padding bottom_margin remind_pass"
 											style="color: #29358A"><strong>¿Ha olvidado la
 												contraseña?</strong></a>
@@ -145,6 +144,7 @@
 												<span class="h4">Acceder</span>
 											</button>
 										</div>
+
 									</form>
 
 								</div>
