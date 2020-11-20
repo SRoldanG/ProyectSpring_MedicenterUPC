@@ -1,19 +1,266 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="layout/layout :: head(~{::title})">
+
+<meta charset="utf-8">
+<link rel="icon" type="image/png" th:href="@{/images/icons/favicon.ico}">
+<link rel="stylesheet"  th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+<link rel="stylesheet"  th:href="@{/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+<link rel="stylesheet"  th:href="@{/vendor/animate/animate.css}">
+<link rel="stylesheet"  th:href="@{/vendor/css-hamburgers/hamburgers.min.css}">
+<link rel="stylesheet"  th:href="@{/vendor/select2/select2.min.css}">
+<link rel="stylesheet"  th:href="@{/css/util.css}">
+<link rel="stylesheet"  th:href="@{/css/main.css}">
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 <title>MediCenter - Login</title>
+
 </head>
-<body>
-	<header th:replace="layout/layout :: header"></header>
-	<main>
-		<section class="container">
+<body class="light-header animsition body-scrolled"
+	style="background-image: url(https://i.imgur.com/mTyJtXq.jpg); background-repeat: no-repeat; background-size: cover; min-height: 100vh; background-attachment: fixed;"  >
+	
+	
+	
+
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+			style="opacity: 0.7; z-index: 9999">
+			<a class="navbar-brand" href="#">
+			<img
+				src="https://i.imgur.com/7q5Cl5j.png" width="70" height="66"></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			
+			
+
+			<div style="margin-left: 50px" class="collapse navbar-collapse"
+				id="navbarNavDropdown">
+				<ul class="navbar-nav">
+					<li class="nav-item active"><a class="nav-link" href="https://stackoverflow.com/questions/44061019/login-error-message-in-modal">Inicio
+							<span class="sr-only">(current)</span>
+					</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/Nosotros}">Nosotros</a></li>
+				
+
+					<li class="nav-item"><a class="nav-link" th:href="@{/clinicas/allclinicas/}">Clinicas</a>
+					</li>
+					
+
+				</ul>
+				
+				</div>
+
+    
+    <span style="font-size: 20px; color: #FFFFFF; font-family: Times New Roman;">#Quedate en casa</span>
+   
+		</nav>
+	
+	
+	
+	
+	
+<!-- 	Formulario de login  -->
+	
+
+<div class="limiter">
+<div class="container-login100">
+<div class="wrap-login100">
+<div class="login100-pic js-tilt" data-tilt>
+<img src="images/img-01.png" alt="IMG">
+</div>
+<form  th:action="@{/signin}" method="post" class="login100-form validate-form">
+<span class="login100-form-title">
+Iniciar Sesión
+</span>
+<div class="wrap-input100 validate-input" data-validate="Es necesario un email válido @">
+<input class="input100" type="text" name="email" placeholder="Usuario o correo electrónico">
+<span class="focus-input100"></span>
+<span class="symbol-input100">
+<i class="fa fa-envelope" aria-hidden="true"></i>
+</span>
+</div>
+<div class="wrap-input100 validate-input" data-validate="Contraseña es requerida">
+<input class="input100" type="password" name="pass" placeholder="Contraseña">
+<span class="focus-input100"></span>
+<span class="symbol-input100">
+<i class="fa fa-lock" aria-hidden="true"></i>
+</span>
+</div>
+<div class="container-login100-form-btn">
+<button class="login100-form-btn">
+Login
+</button>
+</div>
+<div class="text-center p-t-12">
+<span class="txt1">
+¿Olvidó su nombre de
+</span>
+<a class="txt2" href="#">
+Usuario / Contraseña?
+</a>
+</div>
+<div class="text-center p-t-136">
+<a class="txt2" href="#">
+Regístrate
+<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+</a>
+</div>
+</form>
+</div>
+</div>
+</div>
+<!--  Fin del formulario -->
+
+<!-- -------------------------------------------------------------------------------- -->
+
+<footer class="page-footer font-small blue pt-4"  style="background-color:#0A0222; opacity:0.7" >
+
+  <!-- Footer Links -->
+  <div class="container-fluid text-center text-md-left">
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-6 mt-md-0 mt-3">
+
+        <!-- Content -->
+        <h5 class="text-uppercase" style="color:#2FB006">Acerca de Nosotros</h5><br>
+        <p style="color: #FFFFFF"><img src="https://i.imgur.com/XY2eBOT.png" width="20" height="20">www.medicenter.com</p>
+        <p style="color: #FFFFFF"><img src="https://i.imgur.com/iHTKgWq.png" width="20" height="20">medicenter@gmail.com</p>
+
+       
+
+      </div>
+      <!-- Grid column -->
+      
+      
+
+      <hr class="clearfix w-100 d-md-none pb-3">
 
 
-			<img src="/images/index.jpg" class="img-fluid" alt="Responsive image">
 
-		</section>
-	</main>
-	<footer th:replace="layout/layout :: footer"></footer>
+      <!-- Grid column -->
+      <div class="col-md-3 mb-md-0 mb-3">
+
+        <!-- Links -->
+        <h5 class="text-uppercase" style="color:#2FB006">Especialidades</h5>
+
+        <ul class="list-unstyled">
+          <li style="color: #FFFFFF">
+            <a href="#!"><button class="btn btn-sm btn-outline-secondary" type="button">Neurologia</button></a>
+            <a href="#!"><button class="btn btn-sm btn-outline-secondary" type="button">Pediatria</button></a>
+            <a href="#!"><button class="btn btn-sm btn-outline-secondary" type="button">Ginecologia</button></a>
+            <a href="#!"><button class="btn btn-sm btn-outline-secondary" type="button">Cardiologia</button></a>
+          </li >
+          <li style="color: #FFFFFF">
+            <a href="#!"><button class="btn btn-sm btn-outline-secondary" type="button">Cirugia</button></a>
+            <a href="#!"><button class="btn btn-sm btn-outline-secondary" type="button">Traumatologia</button></a>
+            <a href="#!"><button class="btn btn-sm btn-outline-secondary" type="button">Odontologia</button></a>
+            <a href="#!"><button class="btn btn-sm btn-outline-secondary" type="button">Medicina General</button></a>
+            
+          </li >
+          <li style="color: #FFFFFF">
+            <a href="#!"><button class="btn btn-sm btn-outline-secondary" type="button">Oncologia</button></a>
+            <a href="#!"><button class="btn btn-sm btn-outline-secondary" type="button">Urologia</button></a>
+            <a href="#!"><button class="btn btn-sm btn-outline-secondary" type="button">Podologia</button></a>
+            <a href="#!"><button class="btn btn-sm btn-outline-secondary" type="button">Infectologia</button></a>
+          </li >
+          <li style="color: #FFFFFF">
+            <a href="#!"><button class="btn btn-sm btn-outline-secondary" type="button">Nutricion</button></a>
+            <a href="#!"><button class="btn btn-sm btn-outline-secondary" type="button">Fisioterapia</button></a>
+            <a href="#!"><button class="btn btn-sm btn-outline-secondary" type="button">Psicologia</button></a>
+            <a href="#!"><button class="btn btn-sm btn-outline-secondary" type="button">Oftamologia</button></a>
+          </li >
+        </ul>
+        
+        
+
+      </div>
+      <!-- Grid column -->
+      
+      
+
+      <!-- Grid column -->
+      <div class="col-md-3 mb-md-0 mb-3">
+
+        <!-- Links -->
+        <h5 class="text-uppercase" style="color:#2FB006">Contacto</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="#!"><img  src="https://i.imgur.com/nHiXPR7.png" width="25" height="25"></a>
+          </li>
+          <li>
+            <a href="#!"><img  src="https://i.imgur.com/koP0xez.png" width="25" height="25"></a>
+          </li>
+          <li>
+            <a href="#!"><img  src="https://i.imgur.com/Vqzqrsr.png" width="25" height="25"></a>
+          </li>
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Links -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3" style="color: #FFFFFF">© 2020 Copyright:
+    <a href="https://mdbootstrap.com/"> MediCenter.com</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+	
+
+
+
+
+
+
+<script th:src="@{/vendor/jquery/jquery-3.2.1.min.js}"></script>
+
+<script th:src="@{vendor/bootstrap/js/popper.js}"></script>
+<script th:src="@{vendor/bootstrap/js/bootstrap.min.js}"></script>
+
+<script th:src="@{vendor/select2/select2.min.js}"></script>
+
+<script th:src="@{vendor/tilt/tilt.jquery.min.js}"></script>
+
+<script> 
+	$('.js-tilt').tilt({
+			scale: 1.1
+	})
+	</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+   window.dataLayer = window.dataLayer || []; 
+   function gtag(){dataLayer.push(arguments);} 
+   gtag('js', new Date()); -->
+
+   gtag('config', 'UA-23581568-13'); 
+ </script> 
+
+<!-- Valida el correo -->
+<!-- <script src="js/main.js"></script> -->
+<script defer src="../../../../static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"rayId":"5f502b27beb736e4","version":"2020.11.6","si":10}'></script>
+	
+	
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+	
+	
 </body>
 </html>
 
