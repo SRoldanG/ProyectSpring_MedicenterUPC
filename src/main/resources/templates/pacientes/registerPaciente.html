@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/chosen.min.css}">
+    <link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
+    <link rel="stylesheet" th:href="@{/css/solid.min.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <title>Registo de Paciente</title>
+   	<!-- Validacion de solo acepte clikear numeros -->
+    <script>
+        function solonumeros(e){
+            key=e.keyCode || e.wich;
+            teclado= String.fromCharCode(key);
+            numeros="0123456789";
+            especiales="8-37-38-46";//8=backspace(borrar) 37=tecla izquierda 38=tecla derecha 46=suprmimir
+            teclado_especial=false;
+            for (var i in especiales) {
+                if (key==especiales[i]) 
+                {
+                    teclado_especial=true;
+                }
+            }
+            if (numeros.indexOf(teclado)==-1 && !teclado_especial) 
+            {
+                return false;
+            }
+        }
+    </script>
+
+
+  </head>
+
+
+  <body  class="light-header animsition body-scrolled" style="background-image: url(https://i.imgur.com/mTyJtXq.jpg); background-repeat: no-repeat; background-size: cover; min-height: 100vh; background-attachment: fixed;">
+  <div class = "container"> 
+        <div class="row justify-content-center mt-4 pt-4">
+        	<div class="col-md-8">
+        	      <h1 class="modal-dialog text-center"> Registro</h1>
+        	      <hr class="bg-info">      
+                  <!--Icono con link de imagen-centrado -->      	   
+                  <div align="center"><img src="https://pngimage.net/wp-content/uploads/2018/06/new-user-icon-png-9.png" width="200" height="200"></div>
+
+        	      <form action="/action_page.php" class="needs-validation" novalidate>
+                     
+                    <p class="text-danger small pt-1 mt-1 text-center">*Todos los campos son obligatorios</p> 
+                    
+                    <!--Nombre-->
+                    <div class="mt-3 pt-3"></div> 
+        	        <div class="row form-group justify-content-center"> <!--Centraliza el contenido-->
+        	            <div class="col-md-8"> <!--Define cuanto de ancho quiero mi textbook-->
+        	            	<input type="text" name="nombre" maxlength="15" class="form-control" placeholder="Ingrese su Nombre Completo" required>
+                            <div class="invalid-feedback">Complete correctamente</div>
+        	            </div> 
+        	        </div>
+                    <!--Apellido-->
+                    <div class="mt-2 pt-2"></div> 
+        	         <div class="row form-group justify-content-center"> 
+        	            <div class="col-md-8">
+        	            	<input type="text" name="apellido" maxlength="15"  class="form-control" placeholder="Ingrese su Apellido Completo" required>
+                            <div class="invalid-feedback">Complete correctamente</div>
+        	            </div>
+        	        </div>
+                    <!--Distrito-->
+                    <div class="mt-2 pt-2"></div> 
+        	         <div class="row form-group justify-content-center"> 
+        	            <div class="col-md-8">
+        	            	<input type="text" list ="distritos" name="distrito" class="form-control" placeholder="Ingrese su Distrito" required>
+                            <div class="invalid-feedback">Complete correctamente</div>
+                                <datalist id="distritos">    
+
+                                <option value="Ancón">
+                                <option value="Ate">
+                                <option value="Barranco">
+                                <option value="Breña">
+                                <option value="Comas">
+                                <option value="Chorrillos">
+                                <option value="El Agustino">
+                                <option value="Jesús María">
+                                <option value="La Molina">
+                                <option value="La Victoria">
+                                <option value="Lince">
+                                <option value="Magdalena del Mar">
+                                <option value="Miraflores">
+                                <option value="Pueblo Libre">
+                                <option value="Puente Piedra">
+                                <option value="Rimac">
+                                <option value="San Isidro">
+                                <option value="Independencia">
+                                <option value="San Juan de Miraflores">
+                                <option value="San Luis">
+                                <option value="San Martin de Porres">
+                                <option value="San Miguel">
+                                <option value="Santiago de Surco">
+                                <option value="Surquillo">
+                                <option value="Villa María del Triunfo">
+                                <option value="San Juan de Lurigancho">
+                                <option value="Santa Rosa">
+                                <option value="San Borja">
+                                <option value="Villa El Savador">
+                                <option value="Santa Anita">
+
+                                </datalist>
+        	            </div>
+        	        </div>
+                    <!--Celular-->
+                    <div class="mt-2 pt-2"></div> 
+        	         <div class="row form-group justify-content-center"> 
+        	            <div class="col-md-8">
+        	            	<input type="text" name="celular" maxlength="9"  class="form-control" placeholder="Ingrese su Celular" onkeypress="return solonumeros(event)" required>
+                            <div class="invalid-feedback">Complete correctamente</div>
+        	            </div>
+        	        </div>
+                    <!--Direccion --> 
+                    <div class="mt-2 pt-2"></div> 
+        	         <div class="row form-group justify-content-center"> 
+        	            <div class="col-md-8">
+        	            	<input type="text" name="direccion" maxlength="25"  class="form-control" placeholder="Ingrese su Direccion" required>
+                            <div class="invalid-feedback">Complete correctamente</div>
+        	            </div>
+        	        </div>
+                    <!--DNI-->
+                    <div class="mt-2 pt-2"></div> 
+        	         <div class="row form-group justify-content-center"> 
+        	            <div class="col-md-8">
+        	            	<input type="text" name="dni" maxlength="8" class="form-control" placeholder="Ingrese su DNI" onkeypress="return solonumeros(event)" required>
+                            <div class="invalid-feedback">Complete correctamente</div>
+        	            </div>
+        	        </div>
+                    <!--Fecha de nacimiento -->
+                    <div class="mt-2 pt-2"></div> 
+        	         <div class="row form-group justify-content-center"> 
+        	            <div class="col-md-8">
+        	            	<input type="date" name="fecha"  class="form-control" required>
+                            <div class="invalid-feedback">Complete correctamente</div>
+        	            </div>
+        	        </div>
+                    <!-- Terminos y condiciones -->
+                     <div class="mt-2 pt-2"></div> 
+                    <div class="row form-group justify-content-center"> 
+                        <div class="col-md-8">
+                            <input type="checkbox" name="acepto" required>Acepto los terminos y condiciones<br>
+                            <div class="invalid-feedback">Acepte los terminos</div>
+                        </div>
+                    </div>
+                    <!-- Botones-->
+        	        <div class="mt-3 pt-3"></div>
+                    <div class="row form-group justify-content-center">
+                        <div class="col-md-8">  
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">Registrar</button>  
+                        </div>  
+                    </div>
+        	        <!--Separado de botones-->
+        	        <div class="mt-3 pt-3"></div>  
+                    <div class="row form-group justify-content-center">
+                        <div class="col-md-8">
+                        <a href="/" role="button" class="btn btn-primary btn-lg btn-block">Cancelar</a>
+                        </div>
+                    </div>
+        	       
+        	      </form>
+        	</div>
+        </div>
+  </div>  
+    <!--Validacion de que todos los campos esten llenos-->
+    <script>
+    // Disable form submissions if there are invalid fields
+        (function() {'use strict';
+        window.addEventListener('load', function() {
+        // Get the forms we want to add validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+        });
+        }, false);
+        })();
+    </script>
+
+    <script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/fontawesome.min.js}"></script>
+
+  </body>
+</html> 

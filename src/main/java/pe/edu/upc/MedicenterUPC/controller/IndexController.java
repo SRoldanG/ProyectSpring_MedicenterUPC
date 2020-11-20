@@ -22,14 +22,6 @@ public class IndexController {
 		model.addAttribute("clinica",clinica);
 		Especialista doctor = new Especialista();
 		model.addAttribute("doctor", doctor);
-<<<<<<< HEAD
-//		Especialidad especialidad = new Especialidad();
-//		model.addAttribute("especialidad", especialidad);
-		
-		
-=======
-	
->>>>>>> feature/HU_RegistroUsuario
 		return "index";
 	}
 	
