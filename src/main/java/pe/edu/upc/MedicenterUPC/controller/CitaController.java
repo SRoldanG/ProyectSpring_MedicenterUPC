@@ -23,7 +23,7 @@ import pe.edu.upc.MedicenterUPC.services.CitaService;
 
 @Controller
 @RequestMapping("/citas")
-@SessionAttributes("{clinica, doctor, detalleCita }")
+@SessionAttributes("{clinica, doctor, detalleCita,perfil }")
 public class CitaController {
 	
 	@Autowired

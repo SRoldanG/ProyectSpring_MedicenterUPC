@@ -14,7 +14,7 @@ import pe.edu.upc.MedicenterUPC.models.entities.Usuario;
 
 @Controller
 @RequestMapping("/")
-@SessionAttributes("{clinica, doctor}")
+@SessionAttributes("{clinica, doctor,especialista,usuario}")
 public class IndexController {
 	@GetMapping
 	public String index(Model model) {
@@ -22,6 +22,8 @@ public class IndexController {
 		model.addAttribute("clinica",clinica);
 		Especialista doctor = new Especialista();
 		model.addAttribute("doctor", doctor);
+		Usuario usuario = new Usuario();
+		model.addAttribute("usuario", usuario);
 		return "index";
 	}
 	

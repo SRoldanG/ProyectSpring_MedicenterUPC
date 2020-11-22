@@ -33,16 +33,23 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/clinicas/search").permitAll()
 				.antMatchers("/clinicas/**/p").hasRole("PATIENT")
 				
+				
 			.and()
 			.formLogin()
 				.loginProcessingUrl("/signin")
-				.loginPage("/login")
+				.loginPage("/login").permitAll()
 				.usernameParameter("username")
 				.passwordParameter("password")
 			.and()
 			.logout()
 					.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-					.logoutSuccessUrl("/login");
+					.logoutSuccessUrl("/");
+		
+		
+//		    .and()
+//		            .exceptionHandling()
+//		            .accessDeniedHandler(accessDeniedHandler);
+
 			
 	}
 
