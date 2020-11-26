@@ -33,9 +33,5 @@ public class IndexController {
 		return "login";
 	}
 	
-	@GetMapping("/RegistroPaciente")
-	public String registerpacient() {
-		return "pacientes/registerPaciente";
-	}
 	
 }
