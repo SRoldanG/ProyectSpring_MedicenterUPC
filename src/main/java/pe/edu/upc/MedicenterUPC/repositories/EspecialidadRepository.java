@@ -9,5 +9,5 @@ import pe.edu.upc.MedicenterUPC.models.entities.Especialidad;
 
 @Repository
 public interface EspecialidadRepository extends JpaRepository<Especialidad,Integer>{
-	List<Especialidad> findByNombreStartingWith(String nombre) throws Exception;
+	List<Especialidad> findByNombresStartingWith(String nombres) throws Exception;
 }

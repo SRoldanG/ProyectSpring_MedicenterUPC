@@ -20,9 +20,19 @@
 			  <div class="card-body">
 			    <h5 class="card-title" >
 			    	<a th:href="@{'/especialistas/' + ${especialista.nombres} + '-' + ${especialista.id_especialista} + '/p' }" >
-			    		<span th:text="${especialista.nombres}"></span>
+			    		<span th:text="${especialista.nombres}">Nombre</span>
+			    		<span th:text="${especialista.apellidos}">Apellido</span>
 			    	</a>
-			    </h5>			    
+			    </h5>
+			    	
+			    	<span><strong>Especialidad: </strong></span><span th:text="${especialista.especialidad.nombres}"></span>
+			    	<span><strong>Celular: </strong></span><span th:text="${especialista.celular}"></span><br>
+			    		
+			    	<br><div style="text-align:center;"><button style="color:#FFFFFF ;background-color:#069012;"
+					class="btn btn-outline-success my-2 my-sm-0" type="submit">
+					Ver mas
+				</button></div>
+			    		  			    
 			  </div>
 			</div>
 		</div>

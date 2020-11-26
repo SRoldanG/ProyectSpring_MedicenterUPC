@@ -46,7 +46,7 @@ public class AddUsuarioDB implements CommandLineRunner{
 //		especialista2.setUsername("especialista2");
 //		especialista2.setPassword( bcpe.encode("especialista") );
 //		especialista2.setEnable(true);
-//		especialista2.setSegmento(Segmento.ESPECIALISTA);
+//	especialista2.setSegmento(Segmento.ESPECIALISTA);
 //		especialista2.setIdSegmento(2);
 //		
 //		Usuario especialista3 = new Usuario();
@@ -70,11 +70,11 @@ public class AddUsuarioDB implements CommandLineRunner{
 //		
 //		usuarioRepository.save(paciente1);
 //		usuarioRepository.save(paciente2);
-////		
+//
 //		usuarioRepository.save(especialista1);
 //		usuarioRepository.save(especialista2);
 //		usuarioRepository.save(especialista3);
-		
+//		
 	}
 	
 }

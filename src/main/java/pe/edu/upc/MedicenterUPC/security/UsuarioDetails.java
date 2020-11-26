@@ -67,7 +67,7 @@ public class UsuarioDetails implements UserDetails {
 
 	
 	
-	// Agregando nuevos get para obtener el cliente o proveedor vinculado a la cuenta
+	// Agregando nuevos get para obtener al paciente  o  especialista  vinculado a la cuenta
 	
      public Segmento getSegmento()
      {

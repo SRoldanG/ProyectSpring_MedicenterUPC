@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import pe.edu.upc.MedicenterUPC.models.entities.Cita;
+import pe.edu.upc.MedicenterUPC.models.entities.Clinica;
 import pe.edu.upc.MedicenterUPC.models.entities.Especialista;
 import pe.edu.upc.MedicenterUPC.models.entities.Paciente;
 import pe.edu.upc.MedicenterUPC.security.UsuarioDetails;
@@ -22,7 +23,7 @@ import pe.edu.upc.MedicenterUPC.utils.Segmento;
 
 @Controller
 @RequestMapping("/perfil")
-@SessionAttributes("{clinica, doctor, detalleCita }")
+@SessionAttributes("{clinica, doctor, detalleCita ,}")
 public class PerfilController {
 	
 	@Autowired
@@ -32,11 +33,17 @@ public class PerfilController {
 	private EspecialistaService especialistaService;
 	
 	@GetMapping
-	public String perfil(@ModelAttribute("cita") Cita cita, Model model)
+	public String perfil( @ModelAttribute("doctor") Especialista doctor ,@ModelAttribute("clinica") Clinica clinica,  @ModelAttribute("cita") Cita cita, Model model)
 	{
+		
+		model.addAttribute("doctor", doctor);
+		model.addAttribute("clinica", clinica);
+		model.addAttribute("cita", cita);
 		
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
           UsuarioDetails usuarioDetails = (UsuarioDetails)authentication.getPrincipal();
+          
+          
           
 		try 
 		{
@@ -63,7 +70,7 @@ public class PerfilController {
 			e.printStackTrace();
 		}
 		
-		model.addAttribute("cita","cita");
+		
 		return "perfil/perfil";
 	}
 }
