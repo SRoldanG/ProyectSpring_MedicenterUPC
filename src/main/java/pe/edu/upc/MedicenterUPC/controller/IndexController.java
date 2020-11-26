@@ -25,8 +25,13 @@ public class IndexController {
 		model.addAttribute("doctor", doctor);
 		Usuario usuario = new Usuario();
 		model.addAttribute("usuario", usuario);
+
+		Especialidad especialidad = new Especialidad();
+		model.addAttribute("especialidad", especialidad);
+
 		Paciente paciente = new Paciente();
 		model.addAttribute("paciente", paciente);
+ develop
 		return "index";
 	}
 	
