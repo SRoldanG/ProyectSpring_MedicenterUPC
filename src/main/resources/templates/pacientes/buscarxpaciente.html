@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head(~{::title})">
+<title>Medicenter - Búsqueda por paciente</title>
+</head>
+<body class="light-header animsition body-scrolled"
+	style="background-image: url(https://i.imgur.com/mTyJtXq.jpg); background-repeat: no-repeat; background-size: cover; min-height: 100vh; background-attachment: fixed;" >
+	<header th:replace="layout/layout :: header"></header>
+	<main>
+		<section class="container">
+			<h3 style="margin-top: 35px">
+				Resultado de la Busqueda : <span th:text="${paciente.nombres}"></span>
+			</h3>
+
+	 	
+<!-- 			<div style="display:flex;margin-top: 35px"> --> 
+<!-- 			<div th:each="paciente : ${pacientes}" class="card" style="width: 18rem; margin:10px;"> -->
+
+<!-- 			  <div class="card-body"> -->
+<!-- 			   <img th:src="@{${paciente.imagen} + ${paciente.id_paciente}+ '.jpg'}" class="card-img-top" alt="..."> -->
+<!-- 			    <h5 class="card-title" > -->
+			    
+<!-- 			    	<a th:href="@{'/pacientes/' + ${paciente.nombres} + '-' + ${paciente.id_paciente} + '/p' }" > -->
+<!-- 			    		<span th:text="${paciente.nombres} + -->
+<!-- 			    		 '-' + ${paciente.apellidos} + '/p' }" -->
+			    		 
+			    		 <div style="display:flex;margin-top: 35px">
+			<div th:each="paciente : ${pacientes}" class="card" style="width: 18rem; margin:10px;">
+
+			  <div class="card-body">
+			   <img th:src="@{${paciente.imagen} + ${paciente.id_paciente}+ '.jpg'}" class="card-img-top" alt="...">
+			    <h5 class="card-title text-center" th:text="${paciente.nombres}"></h5>
+						<h6 class="card-subtitle mb-2 text-muted" th:text="'APELLIDOS:'"></h6>
+						<h6 class="card-subtitle mb-2 text-muted"
+							th:text= "${paciente.apellidos} "></h6>
+						<h6 class="card-subtitle mb-2 text-muted" th:text="'DISTRITO:'"></h6>	
+						<h6 class="card-subtitle mb-2 text-muted"
+			
+							th:text= "${paciente.distrito.provincia}"></h6>
+							
+						<p class="card-text text-right "
+							th:text="'Celular: ' + ${paciente.celular}"></p>
+			    	<a th:href="@{'/pacientes/' + ${paciente.nombres} + '-' + ${paciente.id_paciente} + '/p' }" >
+			    		<span th:text="'Historial del paciente ' + ${paciente.nombres}"></span>
+			    		</a>
+			    			  
+			  </div>
+			</div>
+		</div>
+
+
+		</section>
+	</main>
+	<div style="margin-top: 230px;">
+		<footer th:replace="layout/layout :: footer"></footer>
+	</div>
+</body>
+</html>
