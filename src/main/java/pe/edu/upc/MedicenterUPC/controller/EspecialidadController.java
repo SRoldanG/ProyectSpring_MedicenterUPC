@@ -26,7 +26,11 @@ public class EspecialidadController {
 		
 		try {
 			
+
 			List<Especialidad> especialidades= especialidadService.findByNombres(rama.getNombres());
+
+			List<Especialidad> especialidades= especialidadService.findByNombres(rama.getNombre());
+
 			model.addAttribute("especialidades", especialidades);
 			
 		} catch (Exception e) {

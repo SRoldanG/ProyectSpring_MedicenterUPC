@@ -1,6 +1,6 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
   <head>
     <!-- Required meta tags -->
@@ -12,7 +12,8 @@
     <link rel="stylesheet" th:href="@{/css/chosen.min.css}">
     <link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
     <link rel="stylesheet" th:href="@{/css/solid.min.css}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    
+   	
     <title>Registo de Paciente</title>
    	<!-- Validacion de solo acepte clikear numeros -->
     <script>
@@ -41,6 +42,7 @@
 
   <body  class="light-header animsition body-scrolled" style="background-image: url(https://i.imgur.com/mTyJtXq.jpg); background-repeat: no-repeat; background-size: cover; min-height: 100vh; background-attachment: fixed;">
   <div class = "container"> 
+        <form th:action="@{/paciente/Registro/save}" method="post" th:object="${paciente}" class="needs-validation" novalidate>
         <div class="row justify-content-center mt-4 pt-4">
         	<div class="col-md-8">
         	      <h1 class="modal-dialog text-center"> Registro</h1>
@@ -48,7 +50,7 @@
                   <!--Icono con link de imagen-centrado -->      	   
                   <div align="center"><img src="https://pngimage.net/wp-content/uploads/2018/06/new-user-icon-png-9.png" width="200" height="200"></div>
 
-        	      <form action="/action_page.php" class="needs-validation" novalidate>
+        	      
                      
                     <p class="text-danger small pt-1 mt-1 text-center">*Todos los campos son obligatorios</p> 
                     
@@ -56,7 +58,7 @@
                     <div class="mt-3 pt-3"></div> 
         	        <div class="row form-group justify-content-center"> <!--Centraliza el contenido-->
         	            <div class="col-md-8"> <!--Define cuanto de ancho quiero mi textbook-->
-        	            	<input type="text" name="nombre" maxlength="15" class="form-control" placeholder="Ingrese su Nombre Completo" required>
+        	            	<input type="text" th:field="*{nombres}" maxlength="15" class="form-control" placeholder="Ingrese su Nombre Completo" required>
                             <div class="invalid-feedback">Complete correctamente</div>
         	            </div> 
         	        </div>
@@ -64,7 +66,7 @@
                     <div class="mt-2 pt-2"></div> 
         	         <div class="row form-group justify-content-center"> 
         	            <div class="col-md-8">
-        	            	<input type="text" name="apellido" maxlength="15"  class="form-control" placeholder="Ingrese su Apellido Completo" required>
+        	            	<input type="text" th:field="*{apellidos}" maxlength="15"  class="form-control" placeholder="Ingrese su Apellido Completo" required>
                             <div class="invalid-feedback">Complete correctamente</div>
         	            </div>
         	        </div>
@@ -72,49 +74,16 @@
                     <div class="mt-2 pt-2"></div> 
         	         <div class="row form-group justify-content-center"> 
         	            <div class="col-md-8">
-        	            	<input type="text" list ="distritos" name="distrito" class="form-control" placeholder="Ingrese su Distrito" required>
+        	            	<input type="text"  th:field="*{distritos}" class="form-control" placeholder="Ingrese su Distrito" required>
                             <div class="invalid-feedback">Complete correctamente</div>
-                                <datalist id="distritos">    
-
-                                <option value="Ancón">
-                                <option value="Ate">
-                                <option value="Barranco">
-                                <option value="Breña">
-                                <option value="Comas">
-                                <option value="Chorrillos">
-                                <option value="El Agustino">
-                                <option value="Jesús María">
-                                <option value="La Molina">
-                                <option value="La Victoria">
-                                <option value="Lince">
-                                <option value="Magdalena del Mar">
-                                <option value="Miraflores">
-                                <option value="Pueblo Libre">
-                                <option value="Puente Piedra">
-                                <option value="Rimac">
-                                <option value="San Isidro">
-                                <option value="Independencia">
-                                <option value="San Juan de Miraflores">
-                                <option value="San Luis">
-                                <option value="San Martin de Porres">
-                                <option value="San Miguel">
-                                <option value="Santiago de Surco">
-                                <option value="Surquillo">
-                                <option value="Villa María del Triunfo">
-                                <option value="San Juan de Lurigancho">
-                                <option value="Santa Rosa">
-                                <option value="San Borja">
-                                <option value="Villa El Savador">
-                                <option value="Santa Anita">
-
-                                </datalist>
+                              
         	            </div>
         	        </div>
                     <!--Celular-->
                     <div class="mt-2 pt-2"></div> 
         	         <div class="row form-group justify-content-center"> 
         	            <div class="col-md-8">
-        	            	<input type="text" name="celular" maxlength="9"  class="form-control" placeholder="Ingrese su Celular" onkeypress="return solonumeros(event)" required>
+        	            	<input type="text" th:field="*{celular}" maxlength="9"  class="form-control" placeholder="Ingrese su Celular" onkeypress="return solonumeros(event)" required>
                             <div class="invalid-feedback">Complete correctamente</div>
         	            </div>
         	        </div>
@@ -122,7 +91,7 @@
                     <div class="mt-2 pt-2"></div> 
         	         <div class="row form-group justify-content-center"> 
         	            <div class="col-md-8">
-        	            	<input type="text" name="direccion" maxlength="25"  class="form-control" placeholder="Ingrese su Direccion" required>
+        	            	<input type="text" th:field="*{direccion}" maxlength="25"  class="form-control" placeholder="Ingrese su Direccion" required>
                             <div class="invalid-feedback">Complete correctamente</div>
         	            </div>
         	        </div>
@@ -130,7 +99,7 @@
                     <div class="mt-2 pt-2"></div> 
         	         <div class="row form-group justify-content-center"> 
         	            <div class="col-md-8">
-        	            	<input type="text" name="dni" maxlength="8" class="form-control" placeholder="Ingrese su DNI" onkeypress="return solonumeros(event)" required>
+        	            	<input type="text" th:field="*{dni}" maxlength="8" class="form-control" placeholder="Ingrese su DNI" onkeypress="return solonumeros(event)" required>
                             <div class="invalid-feedback">Complete correctamente</div>
         	            </div>
         	        </div>
@@ -138,10 +107,11 @@
                     <div class="mt-2 pt-2"></div> 
         	         <div class="row form-group justify-content-center"> 
         	            <div class="col-md-8">
-        	            	<input type="date" name="fecha"  class="form-control" required>
+        	            	<input type="date" th:field="*{nacimiento}" class="form-control" placeholder="dd/mm/yyyy" required>
                             <div class="invalid-feedback">Complete correctamente</div>
         	            </div>
         	        </div>
+        	        
                     <!-- Terminos y condiciones -->
                      <div class="mt-2 pt-2"></div> 
                     <div class="row form-group justify-content-center"> 
@@ -165,9 +135,10 @@
                         </div>
                     </div>
         	       
-        	      </form>
+        	      
         	</div>
         </div>
+        </form>
   </div>  
     <!--Validacion de que todos los campos esten llenos-->
     <script>
@@ -193,6 +164,6 @@
     <script th:src="@{/js/jquery-3.4.1.min.js}"></script>
     <script th:src="@{/js/bootstrap.min.js}"></script>
     <script th:src="@{/js/fontawesome.min.js}"></script>
-
+    <footer  th:replace="layout/layout :: footer"></footer>
   </body>
 </html> 

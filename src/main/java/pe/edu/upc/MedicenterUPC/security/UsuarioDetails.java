@@ -64,6 +64,7 @@ public class UsuarioDetails implements UserDetails {
 		// TODO Auto-generated method stub
 		return this.usuario.isEnable();
 	}
+<<<<<<< HEAD
 
 	
 	
@@ -78,4 +79,13 @@ public class UsuarioDetails implements UserDetails {
     	 return this.usuario.getIdSegmento();
      }
      
+=======
+	
+	public Segmento getSegmento() {
+		return this.usuario.getSegmento();
+	}
+	public Integer getIdSegmento() {
+		return this.usuario.getIdSegmento();
+	}
+>>>>>>> refs/heads/feature/HU_RegistroUsuario
 }

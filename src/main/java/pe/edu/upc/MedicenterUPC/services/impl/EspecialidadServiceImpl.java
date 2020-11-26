@@ -62,7 +62,11 @@ public class EspecialidadServiceImpl implements EspecialidadService, Serializabl
 	@Override
 	public List<Especialidad> findByNombres(String nombres) throws Exception {
 		// TODO Auto-generated method stub
+
 		return especialidadRepository.findByNombresStartingWith(nombres);
+
+		return especialidadRepository.findByNombreStartingWith(nombres);
+
 	}
 
 
