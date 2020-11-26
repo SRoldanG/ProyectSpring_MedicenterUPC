@@ -55,7 +55,10 @@
 						th:href="@{'/clinicas/allclinicas/'}">Clinicas</a></li>
 <!-- 					<li class="nav-item" sec:authorize="isAuthenticated()"><a class="nav-link" th:href="@{/logout}">Cerrar -->
 <!-- 							Sesion</a></li> -->
-
+                  <li class="nav-item"sec:authorize="hasRole('ROLE_PATIENT')"> <a class="nav-link"
+                        th:href="@{'/citas/historialCita'}">Historial Citas</a></li>
+            
+                           
 				</ul>
 </div>
 				
@@ -170,6 +173,7 @@
 			
 			
 			
+			
  <div class="nav-item dropdown" sec:authorize="isAuthenticated()" style="padding:10px" >
         <a class="nav-link dropdown-toggle  btn btn-outline-success" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          <span sec:authentication="name"></span>
@@ -192,9 +196,14 @@
          <strong><button class="btn btn-outline-success" type="button" >Registrarse<br></button></strong>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: #000000; opacity: 0.7">
+
+          <a class="dropdown-item" href="#" style="color: #FFFFFF"><img th:src="@{https://i.imgur.com/ECDm4tb.png}" width="20" height="20" style="opacity: none"><strong>Paciente</strong></a>
+          <a class="dropdown-item" href="/registroespecialista" style="color: #FFFFFF"><img th:src="@{https://i.imgur.com/gHAQwgr.png}" width="20" height="20"><strong>Especialista</strong></a>
+
           <a class="dropdown-item" href="/paciente/Registro" style="color: #FFFFFF"><img th:src="@{https://i.imgur.com/ECDm4tb.png}" width="20" height="20" style="opacity: none"><strong>Paciente</strong></a>
           <a class="dropdown-item" href="/paciente/perfil" style="color: #FFFFFF"><img  width="20" height="20"><strong>Perfil</strong></a>
           <a class="dropdown-item" href="#" style="color: #FFFFFF"><img th:src="@{https://i.imgur.com/gHAQwgr.png}" width="20" height="20"><strong>Especialista</strong></a>
+
           
           
         </div>

@@ -60,6 +60,14 @@ public class EspecialistaController {
 		return "clinicas/vista";
 	}
 	
+
+    @PostMapping("save")
+    public String save (@ModelAttribute("especialistas") Especialista especialista )
+    {     System.out.print(especialista.getApellidos());
+          System.out.print(especialista.getNombres());
+    	return "redirect:/";
+    }
+
 //	@PostMapping("search")
 //	public String search(@ModelAttribute("especialista") Especialista especialista, @ModelAttribute("paciente") Paciente paciente,
 //			Model model) {

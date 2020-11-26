@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head><meta http-equiv="Content-Type" content="text/html; charset=gb18030">
+		
+		<base href="https://abisoftgt.com/sysmedic/">
+		<link rel="icon" type="image/png" href="res/images/favicon.png" />
+		<title>Pacientes</title>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=2.0, maximum-scale=2.0, minimum-scale=2.0">
+		<!-- Bootstrap 3.3.6 -->
+		<link rel="stylesheet" href="res/bootstrap/css/bootstrap.min.css">
+		<!-- Font Awesome -->
+		<link rel="stylesheet" href="res/font-awesome/css/font-awesome.min.css">
+		<!-- fullCalendar 2.2.5-->
+		<link rel="stylesheet" href="res/plugins/fullcalendar/fullcalendar.min.css">
+		<link rel="stylesheet" href="res/plugins/fullcalendar/fullcalendar.print.css" media="print">
+		<!-- Theme style -->
+		<link rel="stylesheet" href="res/dist/css/AdminLTE.min.css">
+		<!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
+		<link rel="stylesheet" href="res/dist/css/skins/_all-skins.min.css">
+		<!-- Pace style -->
+		<link rel="stylesheet" href="res/plugins/pace/pace.min.css">
+		<!-- iCheck -->
+		<link rel="stylesheet" href="res/plugins/iCheck/square/blue.css">
+		<!-- daterange picker -->
+    	<link rel="stylesheet" href="res/plugins/daterangepicker/daterangepicker-bs3.css">
+		<!-- Select2 -->
+        <link rel="stylesheet" href="res/plugins/select2/select2.min.css">
+		    <!-- calendar -->
+		    <link href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' rel='stylesheet'>
+		    <link href='res/plugins/calendar/fullcalendar.min.css' rel='stylesheet' />
+		    <link href='res/plugins/calendar/fullcalendar.print.css' rel='stylesheet' media='print' />
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+		<!-- jQuery 2.2.3 -->
+		<script src="res/plugins/jQuery/jquery-2.2.3.min.js"></script>
+		<!-- Bootstrap 3.3.6 -->
+		<script src="res/bootstrap/js/bootstrap.min.js"></script>
+		<!-- PACE -->
+		<script src="res/plugins/pace/pace.min.js"></script>
+		<!-- SlimScroll -->
+		<script src="res/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+		<!-- FastClick -->
+		<script src="res/plugins/fastclick/fastclick.js"></script>
+		<!-- AdminLTE App -->
+		<script src="res/dist/js/app.min.js"></script>
+		<!-- AdminLTE for demo purposes -->
+		<script src="res/dist/js/demo.js"></script>
+		<!-- Select2 -->
+        <script src="res/plugins/select2/select2.full.min.js"></script>
+        <script>
+            $(function () {
+                //Initialize Select2 Elements
+                $(".select2").select2();
+            });
+        </script>
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5d61a206eb1a6b0be6093143/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
+
+
+
+</head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<main>
+	<section class="content-header">
+	   	<h1>Citas</h1>
+    <section class="content">
+        <div class="row">
+            <div class="form-group">
+            
+                <div class="col-md-2  col-xs-12">
+                    <div class="input-group input-group-sm">
+                        <input type="text" class="form-control" value="01/11/2020 - 26/11/2020" id="range" readonly>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="input-group input-group-sm">
+                        <input type="text" class="form-control" placeholder="Asunto" name="q" id='q' onkeyup="load(1);">
+                        
+                    </div>
+                </div>
+
+                <div class="col-xs-1">
+                    <div id="loader" class="text-center"></div>
+                </div>
+                <!-- <div class="col-md-offset-10"> -->
+                <div class=" pull-right">
+					<a class="btn btn-primary" href="reservations/create"><i class='fa fa-plus'></i> Nuevo</a>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            Mostrar <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu pull-right" role="menu">
+                            <li class='active' onclick='per_page(15);' id='15'><a href="reservations/index#">15</a></li>
+                            <li  onclick='per_page(25);' id='25'><a href="reservations/index#">25</a></li>
+                            <li onclick='per_page(50);' id='50'><a href="reservations/index#">50</a></li>
+                            <li onclick='per_page(100);' id='100'><a href="reservations/index#">100</a></li>
+                            <li onclick='per_page(1000000);' id='1000000'><a href="reservations/index#">Todos</a></li>
+                        </ul>
+                    </div>
+                    <input type='hidden' id='per_page' value='15'>
+                </div>
+            </div>
+            <!-- <div class="col-xs-3"></div> -->
+        </div>
+        <br>
+        <div id="resultados_ajax"></div><!-- Resultados Ajax -->
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Historial de Citas</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Minimizar"><i class="fa fa-minus"></i></button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Cerrar"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive">
+             <div class="outer_div">
+                 <div class="table-responsive">
+                  <table class="table table-striped table-borderd table-condensed table-hover">
+                    <thead>
+                        <tr>
+                          <th>Asunto</th> 
+                          <th>Medico</th> 
+                          <th>Fecha</th>
+                          <th></th>
+                        </tr>
+                    </thead>
+                      <tbody>
+                          <tr>
+                                 <td>Loool</td>
+                            <td> Marcell Castro</td>
+                            <td>2020-11-19 09:30</td>
+                             <td class= "text-right">
+                               <a href="#" class="btn btn-info">Detalles</a>
+                                <a href="citas/resumen" class="btn btn-info">Editar</a>
+                                <button type="button" class="btn btn-danger"> Eliminar</button>   
+                             </td>
+
+                          </tr>
+
+                      </tbody>
+                      <tfoot>
+                          <tr>
+                              <td colspan="10">
+                                  "Mostrando 1 al 3 de 3 registros"
+                                  <ul class="pagination pagination-sm no-margin pull-right">
+                                      <li class="disabled">
+                                        <span>
+                                            <a >< Anterior</a>
+                                        </span>
+                                      </li>
+                                      <li class="active">
+                                          <a>1</a>
+                                      </li>
+                                      <li class="disabled">
+                                          <span>
+                                              <a > Siguiente ></a>
+                                          </span>>
+                                      </li>
+                                  </ul>
+                              </td>
+                          </tr>
+                      </tfoot>
+                  </table>   
+                 </div>
+             </div>
+            </div>
+            <!-- /.box-body -->
+        </div><!-- /.box -->
+    </section><!-- /.content -->
+
+
+
+
+	</main>
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

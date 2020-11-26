@@ -27,11 +27,10 @@ import pe.edu.upc.MedicenterUPC.services.PacienteService;
 
 @Controller
 @RequestMapping("/citas")
-<<<<<<< HEAD
+
 @SessionAttributes("{clinica, doctor, detalleCita,perfil }")
-=======
 @SessionAttributes("{clinica, doctor, detalleCita}")
->>>>>>> refs/heads/feature/HU_RegistroUsuario
+
 public class CitaController {
 
 	@Autowired
@@ -80,6 +79,20 @@ public class CitaController {
 		return "citas/resumen";
 	}
 	
+
+	@GetMapping("historialCita")
+	public String allclinicas(@ModelAttribute("clinica") Clinica clinica, @ModelAttribute("doctor") Especialista doctor,
+			@ModelAttribute("detallecita") Cita detalleCita,Model model) {
+		try {
+			List<Cita> lista= citaService.findAll();
+			lista.remove(citaService.findById(1).get());
+			model.addAttribute("historialCita", lista);
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return "citas/historialCita";
 	@GetMapping("{idCita}/p")
 	public String view(@PathVariable("idCita") Integer idCita,
 			@ModelAttribute("doctor") Especialista doctor, @ModelAttribute("clinica") Clinica clinica,Model model) {
@@ -94,6 +107,7 @@ public class CitaController {
 			e.printStackTrace();
 		}
 		return "citas/resumen";
+
 	}
 	
 	
