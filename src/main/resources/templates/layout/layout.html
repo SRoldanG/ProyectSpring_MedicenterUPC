@@ -1,5 +1,10 @@
 <!doctype html>
+
 <html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 
 
 <head th:fragment="head(title)">
@@ -23,7 +28,11 @@
 	<header th:fragment="header">
 
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+
 			style="opacity: 0.7;z-index: 9999; width=100%;">
+
+			style="opacity: 0.8;">
+
 			<a class="navbar-brand" href="#"><img
 				src="https://i.imgur.com/7q5Cl5j.png" width="70" height="66"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -51,27 +60,36 @@
 </div>
 				
 
+
+
+
 			<form th:action="@{/clinicas/search}" th:object="${clinica}"
-				method="post" class="form-inline">
+				method="post" class="form-inline" >
 				<input th:field="*{nombrec}" class="form-control mr-sm-2"
 					type="search" placeholder="Buscar por Clinica" aria-label="Search" size="20%">
 				<button style="margin-left: -7px"
-					class="btn btn-outline-success my-2 my-sm-0" type="submit">
+					class="btn btn-outline-primary my-2 my-sm-0" type="submit">
 					<i class="fas fa-search"></i>
 				</button>
 			</form>
+
 <!-- 			Buscar por especialista -->
 			<form style="margin-left: 12px;padding-right:10px" th:action="@{/especialistas/search}"
 				th:object="${doctor}" method="post" class="form-inline" >
+
+
+			<form style="margin-left: 12px" th:action="@{/especialistas/search}"
+				th:object="${doctor}" method="post" class="form-inline" sec:authorize="hasRole('ROLE_PATIENT')">
+
 				<input th:field="*{nombres}" class="form-control mr-sm-2"
 					type="search" placeholder="Buscar por Especialista"
 					aria-label="Search">
 				<button style="margin-left: -7px"
-					class="btn btn-outline-success my-2 my-sm-0" type="submit">
+					class="btn btn-outline-primary my-2 my-sm-0" type="submit">
 					<i class="fas fa-search"></i>
 				</button>
 			</form>
-			
+
 			
 			<form th:action="@{/especialidad/search}" th:object="${rama}"
 				method="post" class="form-inline" sec:authorize="hasRole('ROLE_PATIENT')">
@@ -85,13 +103,47 @@
 			
 		
 			
-			
 <!-- 			Buscar por paciente -->
-			<form th:action="" th:object=""
-				method="post" class="form-inline" sec:authorize="hasRole('ROLE_ESPECIALIST')">
-				<input th:field="" class="form-control mr-sm-2"
+<!-- 			<form  style="padding: 25px" -->
+<!-- 				method="post" class="form-inline" > -->
+<!-- 				<input  class="form-control mr-sm-2"  -->
+<!-- 					type="search" placeholder="Buscar por Paciente" aria-label="Search"> -->
+<!-- 				<button style="margin-left: -7px" -->
+<!-- 					class="btn btn-outline-success my-2 my-sm-0" type="submit"> -->
+<!-- 					<i class="fas fa-search"></i> -->
+<!-- 				</button> -->
+<!-- 			</form> -->
+
+
+			<form th:action="@{/clinicas/search}" th:object="${clinica}"
+                method="post" class="form-inline" sec:authorize="hasRole('ROLE_PATIENT')">
+                <input th:field="*{nombrec}" class="form-control mr-sm-2"  
+                    type="search" placeholder="Buscar por Clinica" 
+                    aria-label="Search" >
+                <button style="margin-left: -7px"
+                    class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+<!--             Buscar por especialista -->
+            <form style="margin-left: 12px;padding-right:10px" th:action="@{/especialistas/search}"
+                th:object="${doctor}" method="post" class="form-inline" sec:authorize="hasRole('ROLE_PATIENT')" >
+                <input th:field="*{nombres}" class="form-control mr-sm-2"
+                    type="search" placeholder="Buscar por Especialista"
+                    aria-label="Search">
+                <button style="margin-left: -7px"
+                    class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+			
+			
+<!-- 			Buscar por paciente --> 
+			<form style="margin-left: 40px;padding-right:40px" th:action="@{/pacientes/search}" th:object="${paciente}"
+				method="get" class="form-inline" sec:authorize="hasRole('ROLE_ESPECIALIST')" >
+				<input  th:field="*{nombres}" class="form-control mr-sm-2"
 					type="search" placeholder="Buscar por Paciente" aria-label="Search">
-				<button style="margin-left: -7px"
+				<button style="margin-left: -6px"
 					class="btn btn-outline-success my-2 my-sm-0" type="submit">
 					<i class="fas fa-search"></i>
 				</button>
@@ -127,6 +179,38 @@
         </div>
      </div>
    
+
+
+			<div style="margin-left: 50px" class="collapse navbar-collapse"
+				id="navbarNavDropdown">
+				<div class="navbar-nav">
+
+					<a class="nav-link" href="/">Inicio</a> <a class="nav-link">Nosotros</a>
+					<a class="nav-link" th:href="@{'/citas/miscitas/'}" sec:authorize="hasRole('ROLE_PATIENT')">Mis Citas</a> <a
+						class="nav-link" th:href="@{'/clinicas/'}">Clinicas</a>
+					<a style="margin-left: 370px;" class="nav-link"
+						th:href="@{'/login'}" sec:authorize="isAnonymous()"> <i
+						class="fas fa-user"> </i> Inicia Sesión / Registrate
+					</a>
+					
+					<div style="margin-left: 370px; display: flex;" class="btn-group" sec:authorize="isAuthenticated()">
+						<button type="button" class="btn btn-primary dropdown-toggle"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<span sec:authentication="name"></span></button>
+						<div class="dropdown-menu" >
+							<a class="dropdown-item" th:href="@{/perfil}">Ver Perfi</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" th:href="@{/logout}">Cerrar Sesion</a>
+						</div>
+					</div>
+
+
+				</div>
+
+			</div>
+
+
+
 		</nav>
 	</header>
 

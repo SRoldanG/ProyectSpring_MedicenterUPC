@@ -15,11 +15,13 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import pe.edu.upc.MedicenterUPC.models.entities.Cita;
 import pe.edu.upc.MedicenterUPC.models.entities.Clinica;
+import pe.edu.upc.MedicenterUPC.models.entities.Distrito;
 import pe.edu.upc.MedicenterUPC.models.entities.Especialista;
 import pe.edu.upc.MedicenterUPC.models.entities.Usuario;
 import pe.edu.upc.MedicenterUPC.repositories.UsuarioRepository;
 import pe.edu.upc.MedicenterUPC.security.UsuarioDetailsService;
 import pe.edu.upc.MedicenterUPC.services.ClinicaService;
+import pe.edu.upc.MedicenterUPC.services.DistritoService;
 
 @Controller
 @RequestMapping("/clinicas")
@@ -28,7 +30,7 @@ public class ClinicaController {
 	@Autowired
 	private ClinicaService clinicaService;
 	@Autowired
-	private UsuarioRepository usuarioService;
+	private DistritoService distritoService;
 
 	@PostMapping("search")
 	public String search(@ModelAttribute("clinica") Clinica clinica,
@@ -37,10 +39,15 @@ public class ClinicaController {
 		try {
 			List<Clinica> clinicas = clinicaService.findByNombrec(clinica.getNombrec());
 			model.addAttribute("clinicas", clinicas);
+			if (clinicas.isEmpty())
+				return "clinicas/not-found";
+			else
+				return "clinicas/result-search";
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "clinicas/result-search";
+		return "redirect:/";
 	}
 
 	@GetMapping("{nombrec}-{idC}/p")
@@ -57,7 +64,7 @@ public class ClinicaController {
 				model.addAttribute("especialistas", especialistas);
 				Cita detalleCita = new Cita();
 				detalleCita.setDuracion("30 minutos");
-				detalleCita.setPrecio((float) 70);
+				detalleCita.setPrecio((float) 70.00);
 				model.addAttribute("detalleCita", detalleCita);
 				
 			}
@@ -68,12 +75,17 @@ public class ClinicaController {
 		return "clinicas/vista";
 	}
 
-	@GetMapping("allclinicas")
-	public String allclinicas(@ModelAttribute("clinica") Clinica clinica, @ModelAttribute("doctor") Especialista doctor,
+	@GetMapping
+	public String clinicas(@ModelAttribute("clinica") Clinica clinica,@ModelAttribute("distrito") Distrito distrito
+			, @ModelAttribute("doctor") Especialista doctor,
 			Model model) {
+		
+		model.addAttribute("distrito",distrito);
 		try {
+			model.addAttribute("distritos",distritoService.findAll());
 			List<Clinica> lista = clinicaService.findAll();
-			lista.remove(clinicaService.findById(1).get());
+			model.addAttribute("clinicauno",lista.get(0));
+			lista.remove(lista.get(0));
 			model.addAttribute("allClinicas", lista);
 		
 		} catch (Exception e) {
@@ -83,4 +95,28 @@ public class ClinicaController {
 		return "clinicas/lista";
 	}
 
+	
+	@PostMapping("pordistrito")
+	public String pordistrito(@ModelAttribute("clinica") Clinica clinica,@ModelAttribute("distrito") Distrito distrito,
+			@ModelAttribute("doctor") Especialista doctor, Model model) {
+		model.addAttribute("distrito", distrito);
+		try {
+			model.addAttribute("distritos",distritoService.findAll());
+			List<Clinica> lista = distritoService.findByNombre(distrito.getNombre()).get().getClinicas();
+			if (!lista.isEmpty()) {
+				model.addAttribute("clinicauno",lista.get(0));
+				lista.remove(lista.get(0));
+				model.addAttribute("allClinicas", lista);
+				return "clinicas/lista";
+			}
+			else
+				return "clinicas/not-found";
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return clinicas(clinica, distrito, doctor, model);
+	}
+	
 }
