@@ -13,6 +13,27 @@
 					<li class="breadcrumb-item active">Clinica</li>
 				</ol>
 			</nav>
+			
+			<div align="center" class="form-group">
+			<label>BUSQUEDA POR DISTRITO</label>
+				<div class="btn-group">
+					<form style="margin-left: 12px" th:action="@{/clinicas/pordistrito}"
+					th:object="${distrito}" method="post" class="form-inline">
+					<input th:field="*{nombre}" type="search" class="form-control"
+						data-toggle="dropdown" aria-label="Search"
+						placeholder="Seleccione Distrito" list="lista_distritos">
+
+					<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">
+						<i class="fas fa-search"></i>
+					</button>
+
+					<datalist id="lista_distritos">
+						<option th:each="distrito : ${distritos}"
+							th:text="${distrito.nombre} +' - '+${distrito.provincia}" th:value="${distrito.nombre}">
+					</datalist>
+					</form>
+				</div>
+			</div>
 
 			<div id="carouselExampleCaptions" class="carousel slide"
 				data-ride="carousel">
@@ -24,23 +45,24 @@
 				</ol>
 				<div class="carousel-inner">
 					<div class="carousel-item active">
-						<img th:src="@{'/images/clinics/1' + '.jpg'}"
+						<img th:src="@{${clinicauno.imagen} + ${clinicauno.idC} + '.jpg'}"
 							class="d-block w-100" alt="...">
 						<div class="carousel-caption d-none d-md-block bg-dark mb-4">
 							<h3>
-								<a
-									th:href="@{'/clinicas/' + 'Dios Milagroso' + '-' + '1' + '/p' }"> Dios Milagroso </a>
+								<a th:href="@{'/clinicas/' + ${clinicauno.nombrec} + '-' + ${clinicauno.idC} + '/p'}">
+									   <span th:text="${clinicauno.nombrec}"></span>
+								</a>
 							</h3>
 							<h6>
 								Ubicacion: <span style="margin-left: 12px"
-									th:text="${'Av. Cielitos - Chala - Arequipa'}"></span>
+									th:text="${clinicauno.ubicacion}+' - '+${clinicauno.distrito.nombre}+' - '+${clinicauno.distrito.provincia}"></span>
 							</h6>
 							<h6>
 								Horario: <span style="margin-left: 12px"
-									th:text="${'10 am hasta 1 am'}"></span>
+									th:text="${clinicauno.horario}"></span>
 							</h6>
 							<a style="display: compact;"
-								th:href="@{'/clinicas/' + 'Dios Milagroso' + '-' + '1' + '/p' }"
+								th:href="@{'/clinicas/' + ${clinicauno.nombrec} + '-' + ${clinicauno.idC} + '/p'}"
 								class="btn btn-primary">Reserva tu Cita</a>
 						</div>
 					</div>
@@ -79,7 +101,8 @@
 				</a>
 			</div>
 
-			
+
+
 
 		</section>
 	</main>
