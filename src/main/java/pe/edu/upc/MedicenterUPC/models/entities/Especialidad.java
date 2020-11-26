@@ -16,10 +16,10 @@ import javax.persistence.Table;
 public class Especialidad {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer Id_Especialidad;
+	private Integer id_Especialidad;
 	
-	@Column(name = "nombre", length = 20, nullable = false)
-	private String nombre;
+	@Column(name = "nombres", length = 20, nullable = false)
+	private String nombres;
 	 
 	@OneToMany(mappedBy="especialidad")
 	private List<Especialista> especialistas;
@@ -30,20 +30,20 @@ public class Especialidad {
 	
 	
 	public void setId_Especialidad(Integer id_Especialidad) {
-		Id_Especialidad = id_Especialidad;
+		this.id_Especialidad= id_Especialidad;
 	}
 	 public Integer getId_Especialidad() {
-		return Id_Especialidad;
+		return id_Especialidad;
 	}
 
 
-	public String getNombre() {
-		return nombre;
+	public String getNombres() {
+		return nombres;
 	}
 
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setNombres(String nombres) {
+		this.nombres = nombres;
 	}
 
 

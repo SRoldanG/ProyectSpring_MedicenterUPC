@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import pe.edu.upc.MedicenterUPC.models.entities.Especialidad;
 import pe.edu.upc.MedicenterUPC.repositories.EspecialidadRepository;
+
 import pe.edu.upc.MedicenterUPC.services.EspecialidadService;
 import pe.edu.upc.MedicenterUPC.utils.Segmento;
 
@@ -61,7 +62,11 @@ public class EspecialidadServiceImpl implements EspecialidadService, Serializabl
 	@Override
 	public List<Especialidad> findByNombres(String nombres) throws Exception {
 		// TODO Auto-generated method stub
+
+		return especialidadRepository.findByNombresStartingWith(nombres);
+
 		return especialidadRepository.findByNombreStartingWith(nombres);
+
 	}
 
 
