@@ -34,7 +34,7 @@
 			</button>
 
 			<form th:action="@{/clinicas/search}" th:object="${clinica}"
-				method="post" class="form-inline">
+				method="post" class="form-inline" >
 				<input th:field="*{nombrec}" class="form-control mr-sm-2"
 					type="search" placeholder="Buscar por Clinica" aria-label="Search">
 				<button style="margin-left: -7px"
@@ -44,7 +44,7 @@
 			</form>
 
 			<form style="margin-left: 12px" th:action="@{/especialistas/search}"
-				th:object="${doctor}" method="post" class="form-inline">
+				th:object="${doctor}" method="post" class="form-inline" sec:authorize="hasRole('ROLE_PATIENT')">
 				<input th:field="*{nombres}" class="form-control mr-sm-2"
 					type="search" placeholder="Buscar por Especialista"
 					aria-label="Search">
