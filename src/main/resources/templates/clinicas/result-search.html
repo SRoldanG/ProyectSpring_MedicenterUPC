@@ -12,9 +12,9 @@
 				Resultado de la Busqueda: <span th:text="${clinica.nombrec}"></span>
 			</h3>
 
-			<div style="display: flex; margin-top: 35px">
+			<div style="display: flex; margin-top: 35px;">
 				<div th:each="clinica : ${clinicas}" class="card"
-					style="width: 22rem; margin: 10px;">
+					style="width: 22rem; margin: 10px; ">
 					<img th:src="@{${clinica.imagen} + ${clinica.idC} + '.jpg'}"
 						class="card-img-top" alt="...">
 					<div class="card-body">

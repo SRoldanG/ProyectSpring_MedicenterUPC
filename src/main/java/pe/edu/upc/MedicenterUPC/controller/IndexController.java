@@ -31,8 +31,7 @@ public class IndexController {
 	}
 	
 	@GetMapping("/login")
-	public String login(@ModelAttribute("clinica") Clinica clinica,
-			@ModelAttribute("doctor") Especialista doctor, Model model) {
+	public String login() {
 		return "login";
 	}
 	
