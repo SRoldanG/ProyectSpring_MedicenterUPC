@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import pe.edu.upc.MedicenterUPC.models.entities.Cita;
 import pe.edu.upc.MedicenterUPC.models.entities.Clinica;
 import pe.edu.upc.MedicenterUPC.models.entities.Especialista;
+import pe.edu.upc.MedicenterUPC.models.entities.Paciente;
 import pe.edu.upc.MedicenterUPC.services.EspecialistaService;
 
 @Controller
@@ -59,10 +60,30 @@ public class EspecialistaController {
 		return "clinicas/vista";
 	}
 	
+
     @PostMapping("save")
     public String save (@ModelAttribute("especialistas") Especialista especialista )
     {     System.out.print(especialista.getApellidos());
           System.out.print(especialista.getNombres());
     	return "redirect:/";
     }
+
+//	@PostMapping("search")
+//	public String search(@ModelAttribute("especialista") Especialista especialista, @ModelAttribute("paciente") Paciente paciente,
+//			Model model) {
+//		model.addAttribute("especialista", especialista);
+//		model.addAttribute("paciente", paciente);
+//
+//		try {
+//			List<Especialista> especialistas = especialistaService.findByNombres(especialista.getNombres());
+//			model.addAttribute("especialistas", especialistas);
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return "pacientes/recomendarEspecialista";}
+    
+
+	
+
 }

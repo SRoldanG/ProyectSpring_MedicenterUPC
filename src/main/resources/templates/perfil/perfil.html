@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="es" xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="layout/layout :: head(~{::title})">
@@ -12,48 +13,74 @@
 	<section class="">
 		
 		
-			
 		
-		
-		<div class="card mt-5" >
+		<div class="card mt-5" style="background-color: #0B5894 ">
 			<div class="card-header "><h5> <i class="fas fa-address-card"></i> Perfil</h5></div>
 			<div class="card-body ">
-				<h5 class="card-title">Detalles del Usuario (Frontend: sec:authentication): </h5>
-				<p class="card-text">Username: <span sec:authentication="name">Juan</span> </p>
-				<p class="card-text">Authorities: <span sec:authentication="principal.authorities">[ROLE_]</span> </p>
-				<h5 class="card-title">Detalles del Principal (Frontend: authentication.getPrincipal()): </h5>
-				<p class="card-text">
-					Segmento: <span th:text="${#authentication.getPrincipal().getSegmento()}"></span> 
-				</p>
-				<p class="card-text">
-					Id del Segmento: <span th:text="${#authentication.getPrincipal().getIdSegmento()}"></span> 
-				</p>
+<!-- 				<h5 class="card-title">Detalles del Usuario (Frontend: sec:authentication): </h5> -->
+<!-- 				<p class="card-text">Username: <span sec:authentication="name">Juan</span> </p> -->
+<!-- 				<p class="card-text">Authorities: <span sec:authentication="principal.authorities">[ROLE_]</span> </p> -->
+<!-- 				<h5 class="card-title">Detalles del Principal (Frontend: authentication.getPrincipal()): </h5> -->
+<!-- 				<p class="card-text"> -->
+<!-- 					Segmento: <span th:text="${#authentication.getPrincipal().getSegmento()}"></span>  -->
+<!-- 				</p> -->
+<!-- 				<p class="card-text"> -->
+<!-- 					Id del Segmento: <span th:text="${#authentication.getPrincipal().getIdSegmento()}"></span>  -->
+<!-- 				</p> -->
 				
-				<div th:switch="${segmento}">					
-					<div th:case="'PACIENTE'">
-						<h5 class="card-title">Detalles del Paciente (Backend: Model): </h5>
+				
+			<div style="text-align:center"><img th:src="@{${especialista.foto} + ${especialista.id_especialista}+ '.jpg'}"></div>
+				
+				
+<!-- 				<div >					 -->
+					<div th:switch="${segmento}">
+					<div th:case="'ESPECIALISTA'">
+						<h5 class="card-title"> </h5>
+						
+						
 						<p class="card-text">
-							Apellidos y Nombres: 
-							<span th:text="${paciente.apellidos}"></span>, <span th:text="${paciente.nombres}"></span>
+							
+							<strong>Nombres y Apellidos: </strong>
+							<span th:text="${especialista.nombres}"></span>
+							
+							
 						</p>
-<!-- 						<p class="card-text"> -->
-<!-- 							Dirección: <span th:text="${cliente.direccion}"></span>  -->
-<!-- 						</p> -->
-<!-- 						<p class="card-text"> -->
-<!-- 							Distrito: <span th:text="${cliente.distrito.nombre}"></span>  -->
-<!-- 						</p> -->
-<!-- 						<p class="card-text"> -->
-<!-- 							Celular: <span th:text="${cliente.celular}"></span>  -->
-<!-- 						</p> -->
-<!-- 						<p class="card-text"> -->
-<!-- 							Correo Electrónico: <span th:text="${cliente.correo}"></span>  -->
-<!-- 						</p> -->
+						<p class="card-text">
+							<strong>Correo registrado: </strong>
+							
+							<span th:text="${especialista.email}"></span>
+							
+						</p>
+						
+						
+						<p class="card-text">
+							<strong>Celular: </strong>
+							
+							<span th:text="${especialista.celular}"></span>
+							
+						</p>
+						
+						<p class="card-text">
+							<strong>Direccion: </strong>
+							
+							<span th:text="${especialista.email}"></span>
+							
+						</p>
+						
+						<p class="card-text">
+							<strong>Tiempo de experiencia: </strong>
+							
+							<span th:text="${especialista.tiempo_experiencia}"></span>
+							
+						</p>
+						
+						
 					</div>
-<!-- 					<div th:case="'PROVEEDOR'"> -->
-<!-- 						<h5 class="card-title">Detalles del Proveedor (Backend: Model): </h5> -->
-<!-- 						<p class="card-text"> -->
-<!-- 							Nombre: <span th:text="${proveedor.nombre}"></span> -->
-<!-- 						</p> -->
+                   <div th:case="'PACIENTE'">
+						<h5 class="card-title"> </h5>
+						<p class="card-text">
+							Nombre: <span th:text="${doctor.nombre}"></span>
+						</p>
 <!-- 						<p class="card-text"> -->
 <!-- 							Dirección: <span th:text="${proveedor.direccion}"></span>  -->
 <!-- 						</p> -->
@@ -66,15 +93,15 @@
 <!-- 						<p class="card-text"> -->
 <!-- 							Celular: <span th:text="${proveedor.celular}"></span>  -->
 <!-- 						</p> -->
-<!-- 					</div> -->
+					</div>
 				</div>
 				
 			</div>
-		</div>
-		
-		
-		
-	
+
+</div>
+
+
+
 		
 		
 	</section>
@@ -82,3 +109,76 @@
 	<footer th:replace="layout/layout :: footer"></footer>
 </body>
 </html>
+=======
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head(~{::title})">
+<title>MediCenter - Login</title>
+</head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<main>
+		<section class="container">
+
+
+		<div class="card mt-5" >
+			<div class="card-header "><h5> <i class="fas fa-address-card"></i> Perfil</h5></div>
+			<div class="card-body ">
+				<h5 class="card-title">Detalles del Usuario</h5>
+				<p class="card-text">Username: <span sec:authentication="name">Juan</span> </p>
+				<p class="card-text">Authorities: <span sec:authentication="principal.authorities">[ROLE_]</span> </p>
+				<h5 class="card-title">Detalles del Principal  </h5>
+				<p class="card-text">
+					Segmento: <span th:text="${#authentication.getPrincipal().getSegmento()}"></span> 
+				</p>
+				<p class="card-text">
+					Id del Segmento: <span th:text="${#authentication.getPrincipal().getIdSegmento()}"></span> 
+				</p>
+				
+				<div th:switch="${segmento}">					
+					<div th:case="'PACIENTE'">
+						<h5 class="card-title">Detalles del PACIENTE</h5>
+						<p class="card-text">
+							Apellidos y Nombres: 
+							<span th:text="${paciente.apellidos}"></span>, <span th:text="${paciente.nombres}"></span>
+						</p>
+						<p class="card-text">
+							Dirección: <span th:text="${paciente.direccion}"></span> 
+						</p>
+						<p class="card-text">
+							Distrito: <span th:text="${paciente.distrito.nombre}"></span> 
+						</p>
+						<p class="card-text">
+							Celular: <span th:text="${paciente.celular}"></span> 
+						</p>
+						
+					</div>
+					<div th:case="'ESPECIALISTA'">
+						<h5 class="card-title">Detalles del ESPECIALISTA </h5>
+						<p class="card-text">
+							Nombre: <span th:text="${especialista.nombres}"></span>
+						</p>
+						<p class="card-text">
+							Dirección: <span th:text="${especialista.direccion}"></span> 
+						</p>
+						<p class="card-text">
+							Distrito: <span th:text="${especialista.distrito.nombre}"></span> 
+						</p>
+						<p class="card-text">
+							Email: <span th:text="${especialista.email}"></span> 
+						</p>
+						<p class="card-text">
+							Celular: <span th:text="${especialista.celular}"></span> 
+						</p>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+			
+		</section>
+	</main>
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
+
+>>>>>>> refs/heads/feature/HU_RegistroUsuario

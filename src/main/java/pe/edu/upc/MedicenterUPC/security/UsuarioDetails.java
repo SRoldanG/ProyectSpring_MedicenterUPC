@@ -64,10 +64,11 @@ public class UsuarioDetails implements UserDetails {
 		// TODO Auto-generated method stub
 		return this.usuario.isEnable();
 	}
+<<<<<<< HEAD
 
 	
 	
-	// Agregando nuevos get para obtener el cliente o proveedor vinculado a la cuenta
+	// Agregando nuevos get para obtener al paciente  o  especialista  vinculado a la cuenta
 	
      public Segmento getSegmento()
      {
@@ -78,4 +79,13 @@ public class UsuarioDetails implements UserDetails {
     	 return this.usuario.getIdSegmento();
      }
      
+=======
+	
+	public Segmento getSegmento() {
+		return this.usuario.getSegmento();
+	}
+	public Integer getIdSegmento() {
+		return this.usuario.getIdSegmento();
+	}
+>>>>>>> refs/heads/feature/HU_RegistroUsuario
 }

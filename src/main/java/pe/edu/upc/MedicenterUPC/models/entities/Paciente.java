@@ -33,9 +33,25 @@ public class Paciente
 	@Column(name = "nombres", length = 40, nullable = false)
 	private String nombres;
 	
+	@Column(name = "imagen", nullable = false, length = 80)
+	private String imagen;
+	
+
+
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+
 	@ManyToOne			
 	@JoinColumn(name = "distrito_id")
 	private Distrito distrito;
+	
+	@Column(name = "distrito", length = 50, nullable = false)
+	private String distritos;
 	
 	@Column(name = "celular", length = 9, nullable = false)
 	private String celular;
@@ -53,8 +69,8 @@ public class Paciente
     
     @OneToMany(mappedBy="paciente")
     private List<Cita> citas;
-
-    @OneToMany(mappedBy="paciente")
+    
+	@OneToMany(mappedBy="paciente")
     private List<Receta> recetas;
     
 	public Paciente() {
@@ -139,6 +155,16 @@ public class Paciente
 	public void setRecetas(List<Receta> recetas) {
 		this.recetas = recetas;
 	}
+
+	public String getDistritos() {
+		return distritos;
+	}
+
+	public void setDistritos(String distritos) {
+		this.distritos = distritos;
+	}
     
+	
+
     
 }

@@ -16,7 +16,7 @@
 	<description>Project Medicenter for Spring Boot</description>
 
 	<properties>
-		<java.version>14</java.version>
+		<java.version>11</java.version>
 	</properties>
 
 	<dependencies>
@@ -73,7 +73,7 @@
 		</dependency>
 	</dependencies>
 
->>>>>>> refs/heads/feature/HU_RegistroUsuario
+>>>>>>> feature/HU_RegistroUsuario
 	<build>
 		<plugins>
 			<plugin>

@@ -20,6 +20,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UsuarioDetailsService usuarioDetailsService;
 	
+	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.authenticationProvider(autentificacion());
@@ -32,24 +33,31 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/").permitAll()
 				.antMatchers("/clinicas/search").permitAll()
 				.antMatchers("/clinicas/**/p").hasRole("PATIENT")
+<<<<<<< HEAD
 				
 				
+=======
+>>>>>>> refs/heads/feature/HU_RegistroUsuario
 			.and()
 			.formLogin()
 				.loginProcessingUrl("/signin")
 				.loginPage("/login").permitAll()
 				.usernameParameter("username")
 				.passwordParameter("password")
+//				.defaultSuccessUrl("/menu")
 			.and()
 			.logout()
 					.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 					.logoutSuccessUrl("/");
+<<<<<<< HEAD
 		
 		
 //		    .and()
 //		            .exceptionHandling()
 //		            .accessDeniedHandler(accessDeniedHandler);
 
+=======
+>>>>>>> refs/heads/feature/HU_RegistroUsuario
 			
 	}
 

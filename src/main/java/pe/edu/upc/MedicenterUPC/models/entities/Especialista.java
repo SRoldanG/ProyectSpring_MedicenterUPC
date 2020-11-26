@@ -48,7 +48,7 @@ public class Especialista
 	private String email;// snake
    
     @ManyToOne
-    @JoinColumn(name="clinica_id")
+    @JoinColumn(name="idc")
 	private Clinica clinica;
     
     @ManyToOne

@@ -10,11 +10,12 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import pe.edu.upc.MedicenterUPC.models.entities.Clinica;
 import pe.edu.upc.MedicenterUPC.models.entities.Especialidad;
 import pe.edu.upc.MedicenterUPC.models.entities.Especialista;
+import pe.edu.upc.MedicenterUPC.models.entities.Paciente;
 import pe.edu.upc.MedicenterUPC.models.entities.Usuario;
 
 @Controller
 @RequestMapping("/")
-@SessionAttributes("{clinica, doctor,especialista,usuario}")
+@SessionAttributes("{clinica, doctor,especialista,usuario,rama}")
 public class IndexController {
 	@GetMapping
 	public String index(Model model) {
@@ -24,17 +25,27 @@ public class IndexController {
 		model.addAttribute("doctor", doctor);
 		Usuario usuario = new Usuario();
 		model.addAttribute("usuario", usuario);
+
+		Especialidad especialidad = new Especialidad();
+		model.addAttribute("especialidad", especialidad);
+
+		Paciente paciente = new Paciente();
+		model.addAttribute("paciente", paciente);
+ develop
 		return "index";
 	}
 	
 	@GetMapping("/login")
-	public String login(@ModelAttribute("clinica") Clinica clinica,
-			@ModelAttribute("doctor") Especialista doctor, Model model) {
+	public String login() {
 		return "login";
 	}
 	
+
 	@GetMapping("/registroespecialista")
 	public String registro() {
 		return "especialistas/registroEspecialista";
 	}
+
+
+
 }

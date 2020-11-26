@@ -20,12 +20,12 @@ public class AddUsuarioDB implements CommandLineRunner{
 		
 //		BCryptPasswordEncoder bcpe = new BCryptPasswordEncoder();
 //		 
-//		Usuario paciente1 = new Usuario();
+	//	Usuario paciente1 = new Usuario();
 //		paciente1.setUsername("paciente1");
 //		paciente1.setPassword( bcpe.encode("paciente") );
 //		paciente1.setEnable(true);
-//		paciente1.setSegmento(Segmento.PACIENTE);
-//		paciente1.setIdSegmento(1);
+	//	paciente1.setSegmento(Segmento.PACIENTE);
+	//	paciente1.setIdSegmento(1);
 //		
 //		Usuario paciente2 = new Usuario();
 //		paciente2.setUsername("paciente2");
@@ -46,7 +46,7 @@ public class AddUsuarioDB implements CommandLineRunner{
 //		especialista2.setUsername("especialista2");
 //		especialista2.setPassword( bcpe.encode("especialista") );
 //		especialista2.setEnable(true);
-//		especialista2.setSegmento(Segmento.ESPECIALISTA);
+//	especialista2.setSegmento(Segmento.ESPECIALISTA);
 //		especialista2.setIdSegmento(2);
 //		
 //		Usuario especialista3 = new Usuario();
@@ -58,19 +58,33 @@ public class AddUsuarioDB implements CommandLineRunner{
 //		
 //		
 //		paciente1.addAuthority("ROLE_PATIENT");
+//		// ROLE_CUSTOMER, ROLE_PROVIDER, ROLE_ADMIN
+	//	paciente1.addAuthority("ROLE_PATIENT");
+
 //		paciente2.addAuthority("ROLE_PATIENT");
 //		
 //		especialista1.addAuthority("ROLE_ESPECIALIST");
 //		especialista2.addAuthority("ROLE_ESPECIALIST");
 //		especialista3.addAuthority("ROLE_ESPECIALIST");
 //		
+
 //		
 //		paciente1.addAuthority("ACCESS_DESC");
+
+//		//ACCESS
+	//	paciente1.addAuthority("ACCESS_DESC");
+
 //		paciente2.addAuthority("ACCESS_PROMO");
 //		
 //		usuarioRepository.save(paciente1);
 //		usuarioRepository.save(paciente2);
+
 //		
+
+
+//
+
+//	
 //		usuarioRepository.save(especialista1);
 //		usuarioRepository.save(especialista2);
 //		usuarioRepository.save(especialista3);
