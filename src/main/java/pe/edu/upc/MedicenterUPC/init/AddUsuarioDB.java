@@ -70,11 +70,11 @@ public class AddUsuarioDB implements CommandLineRunner{
 //		
 //		usuarioRepository.save(paciente1);
 //		usuarioRepository.save(paciente2);
-////		
+//		
 //		usuarioRepository.save(especialista1);
 //		usuarioRepository.save(especialista2);
 //		usuarioRepository.save(especialista3);
-		
+//		
 	}
 	
 }
