@@ -51,6 +51,19 @@ public class CitaController {
 		return "citas/resumen";
 	}
 	
+	@GetMapping("historialCita")
+	public String allclinicas(@ModelAttribute("clinica") Clinica clinica, @ModelAttribute("doctor") Especialista doctor,
+			@ModelAttribute("detallecita") Cita detalleCita,Model model) {
+		try {
+			List<Cita> lista= citaService.findAll();
+			lista.remove(citaService.findById(1).get());
+			model.addAttribute("historialCita", lista);
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
+		return "citas/historialCita";
+	}
 	
 }

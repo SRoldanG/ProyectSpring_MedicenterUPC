@@ -56,7 +56,7 @@ public class AddUsuarioDB implements CommandLineRunner{
 //		especialista3.setSegmento(Segmento.ESPECIALISTA);
 //		especialista3.setIdSegmento(3);
 //		
-//		// ROLE_CUSTOMER, ROLE_PROVIDER, ROLE_ADMIN
+//		
 //		paciente1.addAuthority("ROLE_PATIENT");
 //		paciente2.addAuthority("ROLE_PATIENT");
 //		
@@ -64,17 +64,17 @@ public class AddUsuarioDB implements CommandLineRunner{
 //		especialista2.addAuthority("ROLE_ESPECIALIST");
 //		especialista3.addAuthority("ROLE_ESPECIALIST");
 //		
-//		//ACCESS
+//		
 //		paciente1.addAuthority("ACCESS_DESC");
 //		paciente2.addAuthority("ACCESS_PROMO");
 //		
 //		usuarioRepository.save(paciente1);
 //		usuarioRepository.save(paciente2);
-////		
+//		
 //		usuarioRepository.save(especialista1);
 //		usuarioRepository.save(especialista2);
 //		usuarioRepository.save(especialista3);
-		
+//		
 	}
 	
 }

@@ -33,6 +33,8 @@ public class IndexController {
 		return "login";
 	}
 	
-	
-	
+	@GetMapping("/registroespecialista")
+	public String registro() {
+		return "especialistas/registroEspecialista";
+	}
 }
