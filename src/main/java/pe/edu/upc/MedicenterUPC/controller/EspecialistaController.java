@@ -63,6 +63,6 @@ public class EspecialistaController {
     public String save (@ModelAttribute("especialistas") Especialista especialista )
     {     System.out.print(especialista.getApellidos());
           System.out.print(especialista.getNombres());
-    	return "redirect:/especialistas";
+    	return "redirect:/";
     }
 }
