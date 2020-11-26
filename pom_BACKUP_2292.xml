@@ -73,7 +73,7 @@
 		</dependency>
 	</dependencies>
 
->>>>>>> refs/heads/feature/HU_RegistroUsuario
+>>>>>>> feature/HU_RegistroUsuario
 	<build>
 		<plugins>
 			<plugin>
