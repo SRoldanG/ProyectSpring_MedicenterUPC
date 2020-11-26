@@ -52,12 +52,14 @@ public class PacienteServiceImpl implements PacienteService,Serializable{
 		return pacienteRepository.findById(id);
 	}
 
+	@Transactional(readOnly = true)
 	@Override
 	public List<Paciente> findByNombresStartingWith(String nombres) throws Exception {
 		// TODO Auto-generated method stub
 		return pacienteRepository.findByNombresStartingWith(nombres);
 	}
 
+	@Transactional(readOnly = true)
 	@Override
 	public Optional<Paciente> findByDni(String dni) throws Exception {
 		// TODO Auto-generated method stub
