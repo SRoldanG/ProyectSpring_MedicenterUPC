@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head(~{::title})">
+<title>MediCenter - Citas</title>
+</head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<main>
+		<section class="container">
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a th:href="@{'/'}"> Inicio</a></li>
+					<li class="breadcrumb-item"><a
+						th:href="@{'/clinicas/allclinicas/'}"> Clinica </a></li>
+					<li class="breadcrumb-item" aria-current="page"
+						th:text="${citaResumen.especialista.clinica.nombrec}"><a></a>
+					</li>
+					<li class="breadcrumb-item"><a
+						th:href="@{'/clinicas/' + ${citaResumen.especialista.clinica.nombrec} + '-' + ${citaResumen.especialista.clinica.idC} + '/p' }">Reserva
+							de Cita</a></li>
+					<li class="breadcrumb-item active">Resumen</li>
+				</ol>
+			</nav>
+
+			<div style="display: flex;">
+				<div class="card border-primary" align="center" style="width: 50%;">
+					<div style="display: compact;">
+						<div class="card border-primary" align="center">
+							<h5 class="card-header text-white bg-primary">ESPECIALISTA</h5>
+							<div class="card-body">
+								<img style="margin-top: 50px; width: 250px; height: 300px;"
+									th:src="@{${citaResumen.especialista.foto} + ${citaResumen.especialista.id_especialista} + '.jpg'}"
+									class="card-img-top" alt="...">
+								<h3 class="card-title text-primary" style="margin-top: 20px"
+									th:text="${citaResumen.especialista.nombres}+'  '+${citaResumen.especialista.apellidos}"></h3>
+								<h5 class="card-subtitle mb-2 text-muted" align="center"
+									style="margin-top: 1px">
+									Especialidad: <span style="margin-left: 15px"
+										th:text="${citaResumen.especialista.especialidad.nombre}"></span>
+								</h5>
+								<h5 class="card-subtitle mb-2 text-muted" align="center"
+									style="margin-top: 1px;">
+									Tiempo de Experiencia: <span
+										th:text="${citaResumen.especialista.tiempo_experiencia}+' años'"></span>
+								</h5>
+
+								<h5 class="card-subtitle mb-2 text-muted"
+									style="margin-top: 1px;">
+									Email: <span th:text="${citaResumen.especialista.email}"></span>
+								</h5>
+							</div>
+						</div>
+						<div class="card border-primary" align="center">
+							<h5 class="card-header text-white bg-primary">CLINICA</h5>
+							<div class="card-body">
+								<img style="margin-top: 50px;"
+									th:src="@{${citaResumen.especialista.clinica.imagen} + ${citaResumen.especialista.clinica.idC} + '.jpg'}"
+									class="card-img-top" alt="...">
+								<h5></h5>
+								<h3 class="card-title text-primary" style="margin-top: 20px"
+									th:text="${citaResumen.especialista.clinica.nombrec}"></h3>
+
+								<h5 class="card-subtitle mb-2 text-muted"
+									style="margin-top: 20px">
+									Ubicacion: <span style="margin-left: 20px"
+										th:text="${citaResumen.especialista.clinica.ubicacion}+' - '+${citaResumen.especialista.clinica.distrito.nombre}+' - '+${citaResumen.especialista.clinica.distrito.provincia}"></span>
+								</h5>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card border-primary" align="center" style="width: 50%;">
+					<div style="display: compact;">
+						<div class="card border-primary" align="center" style="height: 64%">
+							<h5 class="card-header text-white bg-primary">Detalles de la
+								Cita</h5>
+							<div class="card-body" style="background-color: buttonhighlight;">
+								<div style="margin-top: 30%;" class="form-group row">
+									<label for="especialista" class="col-sm-8 col-1-form-label">
+										Numero de Cita (Id) : </label> <span style="margin-left: -45px;"
+										th:text="${citaResumen.idCita}"> </span>
+
+								</div>
+								<div class="form-group row">
+									<label for="especialista" class="col-sm-7 col-4-form-label">
+										Fecha : </label>
+									<div class="col-4-sm-4">
+										<span th:text="${citaResumen.fecha}"> </span>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="especialista" class="col-sm-7 col-5-form-label">
+										Hora : </label>
+									<div class="col-4-sm-4">
+										<span th:text="${citaResumen.hora}"> </span>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="especialista" class="col-sm-7 col-5-form-label">
+										Tipo de Consulta : </label>
+									<div class="col-4-sm-4">
+										<span th:text="${citaResumen.tipo_cita}"> </span>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="especialista" class="col-sm-7 col-5-form-label">
+										Precio : </label>
+									<div class="col-4-sm-4">
+										<span th:text="'S/. '+${citaResumen.precio}"> </span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="card border-primary" align="center" style="height: 57.1%;">
+							<h5 class="card-header text-white bg-primary">Detalles del Paciente</h5>
+							<div class="card-body" style="background-color: buttonhighlight;">
+								<div class="form-group row"  style="margin-top: 25%;">
+									<label for="especialista" class="col-sm-6 col-1-form-label">
+										Paciente : </label> <span style="margin-left: 0px;"
+										th:text="${citaResumen.paciente.nombres}+' '+${citaResumen.paciente.apellidos}"> </span>
+
+								</div>
+								<div class="form-group row">
+									<label for="especialista" class="col-sm-6 col-4-form-label">
+										DNI : </label>
+									<div class="col-4-sm-4">
+										<span th:text="${citaResumen.paciente.dni}"> </span>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="especialista" class="col-sm-6 col-5-form-label">
+										Celular : </label>
+									<div class="col-4-sm-4">
+										<span th:text="${citaResumen.paciente.celular}"> </span>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="especialista" class="col-sm-6 col-5-form-label">
+										Direccion : </label>
+									<div class="col-4-sm-4">
+										<span th:text="${citaResumen.paciente.direccion}+' '+${citaResumen.paciente.distrito.nombre}+' '+${citaResumen.paciente.distrito.provincia}"> </span>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="especialista" class="col-sm-6 col-5-form-label">
+										Fecha de Nacimiento : </label>
+									<div class="col-4-sm-4">
+										<span th:text="${citaResumen.paciente.nacimiento}"> </span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
+
